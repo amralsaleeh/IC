@@ -243,83 +243,84 @@
                         </div>
 
                         <div class="card-body">
-                        <div class="accordion accordion-margin" id="accordionExample">
-                            <div class="card accordion-item">
-                              <h2 class="accordion-header" id="headingOne">
-                                <button
-                                  class="accordion-button collapsed"
-                                  data-bs-toggle="collapse"
-                                  role="button"
-                                  data-bs-target="#collapseOne"
-                                  aria-expanded="false"
-                                  aria-controls="collapseOne"
-                                >
-                                هل يتم تجديد إشتراكي تلقائيًا؟
-                                </button>
-                              </h2>
+                            <div class="accordion accordion-margin" id="accordionExample">
+                                <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button
+                                    class="accordion-button collapsed"
+                                    data-bs-toggle="collapse"
+                                    role="button"
+                                    data-bs-target="#collapseOne"
+                                    aria-expanded="false"
+                                    aria-controls="collapseOne"
+                                    >
+                                    هل يتم تجديد إشتراكي تلقائيًا؟
+                                    </button>
+                                </h2>
 
-                              <div
-                                id="collapseOne"
-                                class="accordion-collapse collapse"
-                                aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample"
-                              >
-                                <div class="accordion-body">
-                                لا, حيث كل إشتراك مستقل بشكل ذاتي كلياً
-                                </div>
-                              </div>
-                            </div>
-                            <div class="card accordion-item">
-                              <h2 class="accordion-header" id="headingTwo">
-                                <button
-                                  class="accordion-button collapsed"
-                                  data-bs-toggle="collapse"
-                                  role="button"
-                                  data-bs-target="#collapseTwo"
-                                  aria-expanded="false"
-                                  aria-controls="collapseTwo"
+                                <div
+                                    id="collapseOne"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample"
                                 >
-                                هل يمكنني تجميد الإشتراك؟
-                                </button>
-                              </h2>
-                              <div
-                                id="collapseTwo"
-                                class="accordion-collapse collapse"
-                                aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample"
-                              >
-                                <div class="accordion-body">
-                                  نعم, في حال السفر أو المرض لاسمح الله
+                                    <div class="accordion-body">
+                                    لا, حيث كل إشتراك مستقل بشكل ذاتي كلياً
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-                            <div class="card accordion-item">
-                              <h2 class="accordion-header" id="headingThree">
-                                <button
-                                  class="accordion-button collapsed"
-                                  data-bs-toggle="collapse"
-                                  role="button"
-                                  data-bs-target="#collapseThree"
-                                  aria-expanded="false"
-                                  aria-controls="collapseThree"
+                                </div>
+                                <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button
+                                    class="accordion-button collapsed"
+                                    data-bs-toggle="collapse"
+                                    role="button"
+                                    data-bs-target="#collapseTwo"
+                                    aria-expanded="false"
+                                    aria-controls="collapseTwo"
+                                    >
+                                    هل يمكنني تجميد الإشتراك؟
+                                    </button>
+                                </h2>
+                                <div
+                                    id="collapseTwo"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample"
                                 >
-                                هل يمكنني إلغاء الإشتراك؟
-                                </button>
-                              </h2>
-                              <div
-                                id="collapseThree"
-                                class="accordion-collapse collapse"
-                                aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample"
-                              >
-                                <div class="accordion-body">
-                                  لا, غير ممكن إلغاء الإشتراك أو أسترجاع المبلغ لأي سبب كان
+                                    <div class="accordion-body">
+                                    نعم, في حال السفر أو المرض لاسمح الله
+                                    </div>
                                 </div>
-                              </div>
+                                </div>
+                                <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button
+                                    class="accordion-button collapsed"
+                                    data-bs-toggle="collapse"
+                                    role="button"
+                                    data-bs-target="#collapseThree"
+                                    aria-expanded="false"
+                                    aria-controls="collapseThree"
+                                    >
+                                    هل يمكنني إلغاء الإشتراك؟
+                                    </button>
+                                </h2>
+                                <div
+                                    id="collapseThree"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="headingThree"
+                                    data-bs-parent="#accordionExample"
+                                >
+                                    <div class="accordion-body">
+                                    لا, غير ممكن إلغاء الإشتراك أو أسترجاع المبلغ لأي سبب كان
+                                    </div>
+                                </div>
+                                </div>
                             </div>
-                          </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
