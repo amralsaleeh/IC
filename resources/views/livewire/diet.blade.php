@@ -36,7 +36,7 @@
 
                         <div class="card-header d-flex justify-content-between align-items-center" style="margin-bottom: -15px;">
                             <h4 class="card-title mb-sm-0 mb-1">الوجبات</h4>
-                            <a href="https://wa.me/message/POU44V4CNULGN1" style="color: gray">هل لديك سؤال أو استفسار عن تمرين معين, تواصل معي؟</a>
+                            <a href="https://wa.me/message/POU44V4CNULGN1" style="color: gray">هل لديك سؤال أو استفسار عن وجبة معينة, تواصل معي؟</a>
                         </div>
 
                         <div class="card-body">
@@ -108,10 +108,9 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                              الجدول السابق يوضح التمارين الخاصة بك بالخطة الحالية بناء على حالتك الخاصة, يمكنك النقر على أسم التمرين لمشاهدة الفيديو الخاص به, في حال وجود أي تمرين غير مفهوم الرجاء <a href="https://wa.me/message/POU44V4CNULGN1">التواصل معي</a> بشكل مباشر
+                              الجدول السابق يوضح الوجبات الخاصة بك بالخطة الحالية بناء على حالتك الخاصة, يمكنك النقر على أسم الوجبة لمشاهدة التفاصيل الخاصة بها, في حال وجود أي وجبة غير مفهومة الرجاء <a href="https://wa.me/message/POU44V4CNULGN1">التواصل معي</a> بشكل مباشر
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
