@@ -22,7 +22,7 @@
                     <div class="col-12">
                         <h2 class="content-header-title float-start mb-0">الصفحة الرئيسية</h2>
                         <div class="breadcrumb-wrapper">
-                            <ol class="breadcrumb ">
+                            <ol class="breadcrumb">
                                 {{-- <li class="breadcrumb-item"><a href="index.html">الصفحة الرئيسية</a></li> --}}
                                 <li class="breadcrumb-item active"><a href="dashboard">نظرة عامة</a></li>
                             </ol>
