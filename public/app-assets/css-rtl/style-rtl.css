@@ -518,6 +518,7 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
 }
 .accordion .accordion-body {
     background-color: #252525;
+    border-radius: 0px 0px 10px 10px;
 }
 
 /*============================
