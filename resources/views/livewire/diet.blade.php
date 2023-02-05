@@ -51,7 +51,7 @@
                                         aria-expanded="false"
                                         aria-controls="collapseOne"
                                         >
-                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d">الفطور</h4>
+                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">الفطور</h4>
                                         </button>
                                     </h2>
 
@@ -83,7 +83,7 @@
                                         aria-expanded="false"
                                         aria-controls="collapseTwo"
                                         >
-                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d">الغداء</h4>
+                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">الغداء</h4>
                                         </button>
                                     </h2>
 

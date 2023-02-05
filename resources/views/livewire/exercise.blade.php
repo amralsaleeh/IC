@@ -51,7 +51,7 @@
                                         aria-expanded="false"
                                         aria-controls="collapseOne"
                                         >
-                                        اليوم الأول
+                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">اليوم الأول</h4>
                                         </button>
                                     </h2>
 
@@ -131,7 +131,7 @@
                                         aria-expanded="false"
                                         aria-controls="collapseTwo"
                                         >
-                                        اليوم الثاني
+                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">اليوم الثاني</h4>
                                         </button>
                                     </h2>
 

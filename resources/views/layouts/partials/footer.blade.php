@@ -1,6 +1,6 @@
 <footer class="footer footer-static footer-dark">
     <p class="clearfix mb-0">
-        <span class="float-md-start d-block d-md-inline-block mt-25">كل الـ<i style="margin: 0px 7px 0px 7px" data-feather="heart"></i><a href="https://amralsaleeh.com/">عمرو الصالح</a></span>
+        <span class="float-md-start d-block d-md-inline-block mt-25" style="text-align: center;">كل الـ<i style="margin: 0px 7px 0px 7px" data-feather="heart"></i><a href="https://amralsaleeh.com/">عمرو الصالح</a></span>
         </span>
 
         <span class="float-md-end d-none d-md-block">
