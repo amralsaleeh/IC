@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->comment('');
             $table->integer('id', true);
-            $table->integer('users_id')->index('FKsubscripti835867');
-            $table->integer('bundles_id')->index('FKsubscripti121099');
-            $table->integer('coupons_id')->nullable()->index('FKsubscripti176504');
+            $table->integer('users_id')->index('users_id_subscriptions_FK');
+            $table->integer('bundles_id')->index('bundles_id_subscriptions_FK');
+            $table->integer('coupons_id')->nullable()->index('coupons_id_subscriptions_FK');
             $table->integer('payment');
             $table->timestamp('expiration_date');
             $table->timestamp('created_at');

@@ -295,7 +295,7 @@
                             <label for="expiration_date">الصلاحية</label>
                             <div class="input-group input-group-lg mb-1">
                                 <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
-                                <input wire:model.defer="couponInfo.expiration_date" type="text" class="form-control @error('expiration_date') is-invalid @enderror" id="expiration_date" placeholder="يوم-شهر-سنة">
+                                <input wire:model.defer="couponInfo.expiration_date" type="text" class="form-control @error('expiration_date') is-invalid @enderror" id="expiration_date" placeholder="يوم - شهر - سنة">
                                     @error('expiration_date')
                                     <div class="invalid-feedback">
                                         {{ $message }}

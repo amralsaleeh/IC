@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('diets_plans-foods', function (Blueprint $table) {
             $table->comment('');
             $table->integer('id', true);
-            $table->integer('diets_plans_id')->index('FKdiets_plan53997');
-            $table->integer('foods_id')->index('FKdiets_plan628738');
+            $table->integer('diets_plans_id')->index('diets_plans_id_diets_plans-foods_FK');
+            $table->integer('foods_id')->index('foods_id_diets_plans-foods_FK');
             $table->string('meal');
             $table->integer('quantity');
             $table->timestamp('created_at');

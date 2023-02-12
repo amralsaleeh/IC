@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->boolean('gender');
-            $table->date('birthdate');
+            $table->date('birthDate');
             $table->string('residence_country');
             $table->string('homeland_country');
             $table->string('username');
@@ -28,10 +28,10 @@ return new class extends Migration
             $table->integer('body_type');
             $table->integer('activity_level');
             $table->integer('fitness_level');
-            $table->integer('health_status');
-            $table->integer('injuries_info');
-            $table->integer('training_tools');
-            $table->integer('training_place');
+            $table->string('health_status');
+            $table->string('injuries_info');
+            $table->string('training_tools');
+            $table->string('training_place');
             $table->integer('training_goal');
             $table->integer('general_goal');
             $table->integer('weight_goal');

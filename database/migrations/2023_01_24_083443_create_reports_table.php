@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->comment('');
             $table->integer('id', true);
-            $table->integer('user_id')->index('FKreports53332');
+            $table->integer('user_id')->index('user_id_reports_FK');
             $table->integer('height');
             $table->integer('weight');
             $table->integer('fat');

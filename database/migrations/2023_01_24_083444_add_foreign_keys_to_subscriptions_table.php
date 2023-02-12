@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->foreign(['bundles_id'], 'bundles_id_subscriptions_FK')->references(['id'])->on('bundles');
             $table->foreign(['users_id'], 'users_id_subscriptions_FK')->references(['id'])->on('users');
+            $table->foreign(['bundles_id'], 'bundles_id_subscriptions_FK')->references(['id'])->on('bundles');
             $table->foreign(['coupons_id'], 'coupons_id_subscriptions_FK')->references(['id'])->on('coupons');
         });
     }
@@ -28,8 +28,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->dropForeign('bundles_id_subscriptions_FK');
             $table->dropForeign('users_id_subscriptions_FK');
+            $table->dropForeign('bundles_id_subscriptions_FK');
             $table->dropForeign('coupons_id_subscriptions_FK');
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bundles', function (Blueprint $table) {
             $table->comment('');
             $table->integer('id', true);
-            $table->integer('name');
+            $table->string('name');
             $table->string('features');
             $table->integer('duration');
             $table->integer('price');
