@@ -5,17 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class coupon extends Model
+class GuidesModel extends Model
 {
     use HasFactory;
 
+    protected $table = 'guides';
+
     protected $fillable = [
         'name',
-        'discount',
-        'expiration_date'
+        'description',
     ];
 
-    protected $casts = [
-        'expiration_date' => 'date'
+    protected $hidden = [
+        'created_at',
+        'updated_at',
     ];
 }
