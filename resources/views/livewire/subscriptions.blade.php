@@ -42,19 +42,23 @@
                         <div class="card-body">
                             <p class="card-text" id="status">
                                 <div style="font-size:16px">
-                                    <p style="color: #28c76f; display: initial;"> &#x25CF; </p> فعال &nbsp; - &nbsp; صالح لغاية 28\3\2022
+                                    @if ($isActive)
+                                        <p style="color: green; display: initial;"> &#x25CF; </p> فعال &nbsp; - &nbsp; صالح لغاية: {{ date('(d-m-Y)', strtotime($expirationDate)); }}
+                                    @else
+                                        <p style="color: red; display: initial;"> &#x25CF; </p> غير فعال &nbsp; - &nbsp; إنتهى بتاريخ: {{ date('(d-m-Y)', strtotime($expirationDate)); }}
+                                    @endif
                                 </div>
                             </p>
 
                             <div class="demo-vertical-spacing">
-                                <div class="progress progress-bar-success">
+                                <div class="progress {{ $isActive ? 'progress-bar-success' : 'progress-bar-danger' }}">
                                     <div
                                         class="progress-bar progress-bar-striped progress-bar-animated"
                                         role="progressbar"
                                         aria-valuenow="0"
                                         aria-valuemin="0"
                                         aria-valuemax="100"
-                                        style="width: 90%">
+                                        style="width: {{ $isActive ? $expirationPercentage : '100' }}%">
                                     </div>
                                 </div>
                             </div>
