@@ -43,7 +43,7 @@
                             <p class="card-text" id="status">
                                 <div style="font-size:16px">
                                     @if ($isActive)
-                                        <p style="color: green; display: initial;"> &#x25CF; </p> فعال &nbsp; - &nbsp; صالح لغاية: {{ date('(d-m-Y)', strtotime($expirationDate)); }}
+                                        <p style="color: #28C76F; display: initial;"> &#x25CF; </p> فعال &nbsp; - &nbsp; صالح لغاية: {{ date('(d-m-Y)', strtotime($expirationDate)); }}
                                     @else
                                         <p style="color: red; display: initial;"> &#x25CF; </p> غير فعال &nbsp; - &nbsp; إنتهى بتاريخ: {{ date('(d-m-Y)', strtotime($expirationDate)); }}
                                     @endif
