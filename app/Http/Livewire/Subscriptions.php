@@ -18,7 +18,7 @@ class Subscriptions extends Component
     {
         $this->Subscriptions = DB::table('subscriptions')
             ->join('bundles', 'bundles.id', '=', 'subscriptions.bundles_id')
-            ->where('users_id','=', 41)
+            ->where('users_id','=', 1)
             ->orderBy('expiration_date', 'desc')
             ->first();
 

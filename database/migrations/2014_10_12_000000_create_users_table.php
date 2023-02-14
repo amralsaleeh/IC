@@ -15,15 +15,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->integer('id', true);
+            $table->string('full_name');
             $table->string('first_name');
+            $table->string('middle_name');
             $table->string('last_name');
             $table->boolean('gender');
-            $table->date('birthDate');
+            $table->date('birth_date');
             $table->string('residence_country');
             $table->string('homeland_country');
+            $table->string('email')->unique();
             $table->string('username');
             $table->string('password');
-            $table->string('email')->unique();
             $table->integer('whatsapp');
             $table->integer('body_type');
             $table->integer('activity_level');
