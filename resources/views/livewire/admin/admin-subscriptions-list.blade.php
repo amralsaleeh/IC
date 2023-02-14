@@ -270,37 +270,42 @@
                     {{-- <p class="text-center">Add card for future billing</p> --}}
 
                     <form autocomplete="off" wire:submit.prevent="addNewCoupon" id="addNewCardValidation" class="row gy-1 gx-2 mt-75">
-                        <div class="form-group col-md-12">
-                            <label for="name">الأسم</label>
-                            <input wire:model.defer="couponInfo.name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="COUPON123">
-                            @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="discount">الحسم</label>
-                            <div class="input-group input-group-lg mb-1">
-                                <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
-                                <input wire:model.defer="couponInfo.discount" type="text" class="form-control @error('discount') is-invalid @enderror" id="discount" placeholder="النسبة">
-                                    @error('discount')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="name">الأسم</label>
+                                <input wire:model.defer="couponInfo.name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="COUPON123">
+                                @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
-                        <div class="form-group col-md-7">
-                            <label for="expiration_date">الصلاحية</label>
-                            <div class="input-group input-group-lg mb-1">
-                                <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
-                                <input wire:model.defer="couponInfo.expiration_date" type="text" class="form-control @error('expiration_date') is-invalid @enderror" id="expiration_date" placeholder="يوم - شهر - سنة">
-                                    @error('expiration_date')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
+                        <br>
+                        <div class="row">
+                            <div class="form-group col-md-5">
+                                <label for="discount">الحسم</label>
+                                <div class="input-group input-group-lg mb-1">
+                                    <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                                    <input wire:model.defer="couponInfo.discount" type="text" class="form-control @error('discount') is-invalid @enderror" id="discount" placeholder="النسبة">
+                                        @error('discount')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="form-group col-md-7">
+                                <label for="expiration_date">الصلاحية</label>
+                                <div class="input-group input-group-lg mb-1">
+                                    <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
+                                    <input wire:model.defer="couponInfo.expiration_date" type="text" class="form-control @error('expiration_date') is-invalid @enderror" id="expiration_date" placeholder="يوم - شهر - سنة">
+                                        @error('expiration_date')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                </div>
                             </div>
                         </div>
 
