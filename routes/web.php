@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', Welcome::class)->name('welcome');
 
 // Admin
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth' , 'admin']], function () {
     Route::get('admin/dashboard', AdminDashboardList::class)->name('admin/dashboard');
     Route::get('admin/profile', AdminProfileList::class)->name('admin/profile');
     Route::get('admin/exercise', AdminExerciseList::class)->name('admin/exercise');
