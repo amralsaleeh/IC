@@ -64,54 +64,6 @@
                         </div>
                     </div>
                     </a>
-
-                    {{-- <div class="list-item d-flex align-items-center">
-                    <h6 class="fw-bolder me-auto mb-0">تنبيهات النظام</h6>
-                    <div class="form-check form-check-primary form-switch">
-                        <input class="form-check-input" id="systemNotification" type="checkbox" checked="">
-                        <label class="form-check-label" for="systemNotification"></label>
-                    </div>
-                    </div>
-                    <a class="d-flex" href="javascript:void(0)">
-                    <div class="list-item d-flex align-items-start">
-                        <div class="me-1">
-                        <div class="avatar bg-light-danger">
-                            <div class="avatar-content"><i class="avatar-icon" data-feather="x"></i></div>
-                        </div>
-                        </div>
-                        <div class="list-item-body flex-grow-1">
-                        <p class="media-heading"><span class="fw-bolder">Server down</span>&nbsp;registered</p>
-                        <small class="notification-text"> USA Server is down due to hight CPU usage</small>
-                        </div>
-                    </div>
-                    </a>
-                    <a class="d-flex" href="javascript:void(0)">
-                    <div class="list-item d-flex align-items-start">
-                        <div class="me-1">
-                        <div class="avatar bg-light-success">
-                            <div class="avatar-content"><i class="avatar-icon" data-feather="check"></i></div>
-                        </div>
-                        </div>
-                        <div class="list-item-body flex-grow-1">
-                        <p class="media-heading"><span class="fw-bolder">Sales report</span>&nbsp;generated</p><small
-                            class="notification-text"> Last month sales report generated</small>
-                        </div>
-                    </div>
-                    </a>
-                    <a class="d-flex" href="javascript:void(0)">
-                    <div class="list-item d-flex align-items-start">
-                        <div class="me-1">
-                        <div class="avatar bg-light-warning">
-                            <div class="avatar-content"><i class="avatar-icon" data-feather="alert-triangle"></i></div>
-                        </div>
-                        </div>
-                        <div class="list-item-body flex-grow-1">
-                        <p class="media-heading"><span class="fw-bolder">High memory</span>&nbsp;usage</p><small
-                            class="notification-text"> BLR Server using high memory</small>
-                        </div>
-                    </div>
-                    </a> --}}
-
                 </li>
                 <li class="dropdown-menu-footer">
                     <a class="btn btn-primary w-100" href="javascript:void(0)">مسح جميع التنبيهات</a>
@@ -127,9 +79,9 @@
                     <div class="user-nav d-sm-flex d-none">
                     <span class="user-name fw-bolder">
                         @if (Auth::check())
-                        {{ Auth::user()->name }}
+                            {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
                         @else
-                        مجد طلال ستوت
+                            مجد طلال ستوت
                         @endif
                     </span>
                     <span class="user-status">
@@ -150,61 +102,16 @@
                     <a class="dropdown-item" href="/profile">
                         <i class="me-50" data-feather="user"></i> الملف الشخصي
                     </a>
-                    {{-- @if (Auth::check() && Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <a class="dropdown-item" href="{{ route('api-tokens.index') }}">
-                        <i class="me-50" data-feather="key"></i> API Tokens
-                    </a>
-                    @endif --}}
                     <a class="dropdown-item" href="#status">
                         <i class="me-50" data-feather="clock"></i> حالة الإشتراك
                     </a>
-                    <a class="dropdown-item" href="/logout">
-                        <i class="me-50" data-feather="log-out"></i> تسجيل خروج
-                    </a>
-
-                    @if (Auth::User() && Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Manage Team</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item"
-                        href="{{ Auth::user() ? route('teams.show', Auth::user()->currentTeam->id) : 'javascript:void(0)' }}">
-                        <i class="me-50" data-feather="settings"></i> Team Settings
-                    </a>
-                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                        <a class="dropdown-item" href="{{ route('teams.create') }}">
-                        <i class="me-50" data-feather="users"></i> Create New Team
-                        </a>
-                    @endcan
-
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">
-                        Switch Teams
-                    </h6>
-                    <div class="dropdown-divider"></div>
-                    @if (Auth::user())
-                        @foreach (Auth::user()->allTeams() as $team)
-                        {{-- Below commented code read by artisan command while installing jetstream. !! Do not remove if you want to use jetstream. --}}
-
-                        {{-- <x-jet-switchable-team :team="$team" /> --}}
-                        @endforeach
-                    @endif
-                    <div class="dropdown-divider"></div>
-                    @endif
-
-                    @if (Auth::check())
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="me-50" data-feather="power"></i> Logout
+                        <i class="me-50" data-feather="log-out"></i> تسجيل خروج
                     </a>
                     <form method="POST" id="logout-form" action="{{ route('logout') }}">
                         @csrf
                     </form>
-                    {{-- @else
-                    <a class="dropdown-item" href="{{ Route::has('login') ? route('login') : 'javascript:void(0)' }}">
-                        <i class="me-50" data-feather="log-in"></i> Login
-                    </a> --}}
-                    @endif
-
                 </div>
             </li>
             {{-- User Info --}}
