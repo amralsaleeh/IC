@@ -38,13 +38,7 @@
                 <div class="col-lg-4 col-md-12 col-12">
                     <div class="card card-congratulation-medal">
                     <div class="card-body">
-                        <h1>
-                            @if (Auth::check())
-                            {{ "مرحبا " . Auth::user()->first_name }}
-                            @else
-                            لم يتم تسجيل الدخول
-                            @endif
-                        </h1>
+                        <h1>مرحبا مجد</h1>
                         <p class="card-text font-meduim-1">أتمنى لك يوم سعيد</p>
                         <br>
                         <br>

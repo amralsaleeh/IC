@@ -38,26 +38,27 @@ use Illuminate\Support\Facades\Route;
 // Welcome
 // Route::get('/', Welcome::class)->name('welcome');
 
+// Login
+// Route::get('login', Login::class)->name('login');
+// Logout
+// Route::get('logout', Logout::class)->name('logout');
+
 // Admin
-Route::group(['middleware' => ['auth' , 'admin']], function () {
-    Route::get('admin/dashboard', AdminDashboardList::class)->name('admin/dashboard');
-    Route::get('admin/profile', AdminProfileList::class)->name('admin/profile');
-    Route::get('admin/exercise', AdminExerciseList::class)->name('admin/exercise');
-    Route::get('admin/diet', AdminDietList::class)->name('admin/diet');
-    Route::get('admin/statistics', AdminStatisticsList::class)->name('admin/statistics');
-    Route::get('admin/subscriptions', AdminSubscriptionsList::class)->name('admin/subscriptions');
-    Route::get('admin/guide', AdminGuidesList::class)->name('admin/guide');
-    Route::get('admin/terms', AdminTermsList::class)->name('admin/terms');
-});
+Route::get('admin/dashboard', AdminDashboardList::class)->name('admin/dashboard');
+Route::get('admin/profile', AdminProfileList::class)->name('admin/profile');
+Route::get('admin/exercise', AdminExerciseList::class)->name('admin/exercise');
+Route::get('admin/diet', AdminDietList::class)->name('admin/diet');
+Route::get('admin/statistics', AdminStatisticsList::class)->name('admin/statistics');
+Route::get('admin/subscriptions', AdminSubscriptionsList::class)->name('admin/subscriptions');
+Route::get('admin/guide', AdminGuidesList::class)->name('admin/guide');
+Route::get('admin/terms', AdminTermsList::class)->name('admin/terms');
 
 // Client
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('dashboard', Dashboard::class)->name('dashboard');
-    Route::get('profile', Profile::class)->name('profile');
-    Route::get('exercise', Exercise::class)->name('exercise');
-    Route::get('diet', Diet::class)->name('diet');
-    Route::get('statistics', Statistics::class)->name('statistics');
-    Route::get('subscriptions', Subscriptions::class)->name('subscriptions');
-    Route::get('guide', Guide::class)->name('guide');
-    Route::get('terms', Terms::class)->name('terms');
-});
+Route::get('dashboard', Dashboard::class)->name('dashboard');
+Route::get('profile', Profile::class)->name('profile');
+Route::get('exercise', Exercise::class)->name('exercise');
+Route::get('diet', Diet::class)->name('diet');
+Route::get('statistics', Statistics::class)->name('statistics');
+Route::get('subscriptions', Subscriptions::class)->name('subscriptions');
+Route::get('guide', Guide::class)->name('guide');
+Route::get('terms', Terms::class)->name('terms');

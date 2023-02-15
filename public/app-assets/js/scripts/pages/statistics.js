@@ -54,7 +54,7 @@ document.addEventListener('livewire:load', function () {
           series: [
             {
                 name: '',
-                data: [78, 78.9, 79, 79.3, 80, 81, 100]
+                data: [78, 78.9, 79, 79.3, 80, 81, 82]
             }
           ],
           markers: {
