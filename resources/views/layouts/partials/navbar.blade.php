@@ -27,8 +27,7 @@
                     <div class="list-item d-flex align-items-start">
                         <div class="me-1">
                         <div class="avatar">
-                            <img src="{{ asset('app-assets/images/avatars/male.svg') }}" alt="avatar" width="32"
-                            height="32">
+                            <img src="{{ asset('app-assets/images/avatars/male.svg') }}" alt="avatar" width="32" height="32">
                         </div>
                         </div>
                         <div class="list-item-body flex-grow-1">
@@ -77,21 +76,23 @@
                 <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);"
                     data-bs-toggle="dropdown" aria-haspopup="true">
                     <div class="user-nav d-sm-flex d-none">
-                    <span class="user-name fw-bolder">
-                        @if (Auth::check())
-                            {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
-                        @else
-                            مجد طلال ستوت
-                        @endif
-                    </span>
-                    <span class="user-status">
-                        تدريب أونلاين
-                    </span>
+                        <span class="user-name fw-bolder">
+                            @if (Auth::check())
+                                {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
+                            @else
+                                مجد طلال ستوت
+                            @endif
+                        </span>
+                        <span class="user-status">
+                            تدريب أونلاين
+                        </span>
                     </div>
                     <span class="avatar">
-                        <img class="round"
-                            src="{{ asset('app-assets/images/avatars/male.svg') }}"
-                            alt="avatar" height="40" width="40">
+                        @if ( Auth::user()->gender == 1 )
+                                <img src="{{ asset('app-assets/images/avatars/male.svg') }}" alt="avatar" width="40" height="40">
+                            @else
+                                <img src="{{ asset('app-assets/images/avatars/female.svg') }}" alt="avatar" width="40" height="40">
+                            @endif
                         <span class="avatar-status-online"></span>
                     </span>
                 </a>
