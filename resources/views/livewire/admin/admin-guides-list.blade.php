@@ -49,15 +49,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-
-                                        </td>
-                                        <td>
-                                            <a style="font-size: 16px;" href=""><i class="fa fa-edit text-info mx-1"></i></a>
-                                            <a style="font-size: 16px;" href=""><i class="fa fa-trash text-danger"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach ( $guides as $guide )
+                                        <tr>
+                                            <td style="text-align: right">
+                                                {{$guide->description}}
+                                            </td>
+                                            <td>
+                                                <a style="font-size: 16px;" href=""><i class="fa fa-edit text-info mx-1"></i></a>
+                                                <a style="font-size: 16px;" href=""><i class="fa fa-trash text-danger"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
