@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Coupon;
+use App\Models\CouponModel;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -35,7 +35,7 @@ class AdminSubscriptionsList extends Component
             'expiration_date' => 'required',
         ])-> validate();
 
-        Coupon::create($validatedData);
+        CouponModel::create($validatedData);
 
         $this->dispatchBrowserEvent('hide_new_coupon_modal', ['message' => 'تم إضافة الكوبون بنجاح']);
     }
