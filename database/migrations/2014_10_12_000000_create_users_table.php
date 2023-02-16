@@ -46,9 +46,9 @@ return new class extends Migration
             $table->integer('training_plans_id')->nullable()->index('diets_plans_id_FK');
             $table->integer('diets_plans_id')->nullable()->index('training_plans_id_FK');
             $table->string('role')->default('user');
+            $table->rememberToken();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
-            $table->rememberToken();
         });
     }
 
