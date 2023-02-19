@@ -46,10 +46,10 @@
                     <div class="card">
                       <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
                             <div>
-                                <h4 class="card-title">المؤشرات</h4>
+                                <h4 class="card-title">الإحصائيات</h4>
                             </div>
                         </div>
-                        <div class="card-body">
+                        {{-- <div class="card-body">
                             <div class="d-inline-block me-1">
                                 <div class="d-flex align-items-center">
                                     <i data-feather="circle" class="font-small-3 me-50" style="color:#1fe076"></i>
@@ -62,19 +62,16 @@
                                     <h6 class="mb-0">نسبة الدهون</h6>
                                 </div>
                             </div>
-                        </div>
-                        <div style="text-align: center; cursor:pointer;">
+                        </div> --}}
+                        {{-- <div style="text-align: center; cursor:pointer;">
                             <div class="btn-group mt-md-0 mt-1" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="radio_options" id="radio_option1" autocomplete="off"  />
-                                <label class="btn btn-outline-primary" for="radio_option1">أسبوعي</label>
-
-                                <input type="radio" class="btn-check" name="radio_options" id="radio_option2" autocomplete="off" checked />
+                                <input wire:click.prevent="showMonthlyStatics" type="radio" class="btn-check" name="radio_options" id="radio_option2" autocomplete="off" checked />
                                 <label class="btn btn-outline-primary" for="radio_option2">شهري</label>
 
-                                <input type="radio" class="btn-check" name="radio_options" id="radio_option3" autocomplete="off" />
+                                <input wire:click.prevent="showYearlyStatics" type="radio" class="btn-check" name="radio_options" id="radio_option3" autocomplete="off" />
                                 <label class="btn btn-outline-primary" for="radio_option3">سنوي</label>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card-body">
                             <div id="line-area-chart"></div>
                             <div id="line-area-chart-2"></div>
@@ -130,28 +127,6 @@
                                     <i data-feather="arrow-up" class="text-success"></i>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between mb-1">
-                                <div class="d-flex align-items-center">
-                                    <i data-feather="tablet" class="font-medium-2 text-warning"></i>
-                                    <span class="fw-bold ms-75 me-25">Mobile</span>
-                                    <span>- 34.9%</span>
-                                </div>
-                                <div>
-                                    <span>8%</span>
-                                    <i data-feather="arrow-up" class="text-success"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex align-items-center">
-                                    <i data-feather="tablet" class="font-medium-2 text-danger"></i>
-                                    <span class="fw-bold ms-75 me-25">Tablet</span>
-                                    <span>- 6.5%</span>
-                                </div>
-                                <div>
-                                    <span>-5%</span>
-                                    <i data-feather="arrow-down" class="text-danger"></i>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,96 +136,27 @@
                             <h4 class="card-title">المتدربين المميزين</h4>
                         </div>
                         <div class="card-body">
-                            <div class="employee-task d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row">
-                                    <div class="avatar me-75">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-9.jpg" class="rounded" width="42" height="42" alt="Avatar" />
+                            @foreach ($bestBuyers as $bestBuyer)
+                                <div class="employee-task d-flex justify-content-between align-items-center">
+                                    <div class="d-flex flex-row">
+                                        <div class="avatar me-75">
+                                            @if ( $bestBuyer->gender == 1 )
+                                                <img src="{{ asset('app-assets/images/avatars/male.svg') }}" class="rounded" alt="avatar" width="42" height="42">
+                                            @else
+                                                <img src="{{ asset('app-assets/images/avatars/female.svg') }}" class="rounded" alt="avatar" width="42" height="42">
+                                            @endif
+                                        </div>
+                                        <div class="my-auto">
+                                            <h6 class="mb-0">{{ $bestBuyer->first_name }}</h6>
+                                            <small>{{ $bestBuyer->residence_country }}</small>
+                                        </div>
                                     </div>
-                                    <div class="my-auto">
-                                        <h6 class="mb-0">Ryan Harrington</h6>
-                                        <small>iOS Developer</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="text-muted me-75">9hr 20m</small>
-                                    <div class="employee-task-chart-primary-1"></div>
-                                </div>
-                            </div>
-                            <div class="employee-task d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row">
-                                    <div class="avatar me-75">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-20.jpg" class="rounded" width="42" height="42" alt="Avatar" />
-                                    </div>
-                                    <div class="my-auto">
-                                        <h6 class="mb-0">Louisa Norton</h6>
-                                        <small>UI Designer</small>
+                                    <div class="d-flex align-items-center">
+                                        <small class="text-muted me-75" style="font-size: 16px;">{{ $bestBuyer->paymentSum }} $</small>
+                                        <div class="employee-task-chart-primary-1"></div>
                                     </div>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="text-muted me-75">4hr 17m</small>
-                                    <div class="employee-task-chart-danger"></div>
-                                </div>
-                            </div>
-                            <div class="employee-task d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row">
-                                    <div class="avatar me-75">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-1.jpg" class="rounded" width="42" height="42" alt="Avatar" />
-                                    </div>
-                                    <div class="my-auto">
-                                        <h6 class="mb-0">Jayden Duncan</h6>
-                                        <small>Java Developer</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="text-muted me-75">12hr 8m</small>
-                                    <div class="employee-task-chart-success"></div>
-                                </div>
-                            </div>
-                            <div class="employee-task d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row">
-                                    <div class="avatar me-75">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-20.jpg" class="rounded" width="42" height="42" alt="Avatar" />
-                                    </div>
-                                    <div class="my-auto">
-                                        <h6 class="mb-0">Cynthia Howell</h6>
-                                        <small>Anguler Developer</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="text-muted me-75">3hr 19m</small>
-                                    <div class="employee-task-chart-secondary"></div>
-                                </div>
-                            </div>
-                            <div class="employee-task d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row">
-                                    <div class="avatar me-75">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-16.jpg" class="rounded" width="42" height="42" alt="Avatar" />
-                                    </div>
-                                    <div class="my-auto">
-                                        <h6 class="mb-0">Helena Payne</h6>
-                                        <small>Marketing</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="text-muted me-75">9hr 50m</small>
-                                    <div class="employee-task-chart-warning"></div>
-                                </div>
-                            </div>
-                            <div class="employee-task d-flex justify-content-between align-items-center">
-                                <div class="d-flex flex-row">
-                                    <div class="avatar me-75">
-                                        <img src="../../../app-assets/images/portrait/small/avatar-s-13.jpg" class="rounded" width="42" height="42" alt="Avatar" />
-                                    </div>
-                                    <div class="my-auto">
-                                        <h6 class="mb-0">Troy Jensen</h6>
-                                        <small>iOS Developer</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="text-muted me-75">4hr 48m</small>
-                                    <div class="employee-task-chart-primary-2"></div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -325,8 +231,6 @@
 @endsection
 
 @section('page-script')
-    <script src="{{ asset ('app-assets/js/scripts/pages/subscriptions.js') }}"></script>
-
     <script>
         $(document).ready(function() {
             toastr.options = {
@@ -356,6 +260,231 @@
                 toastr.success(event.detail.message, 'نجحت العملية!');
             })
         })
+    </script>
+
+    {{-- Charts --}}
+    <script>
+        document.addEventListener('livewire:load', function () {
+
+        'use strict';
+
+        var sessionChart;
+        var sessionChartOptions;
+
+        // Line Chart - 1
+        // --------------------------------------------------------------------
+        var areaChartEl = document.querySelector('#line-area-chart'),
+        areaChartConfig = {
+            chart: {
+                height: 400,
+                type: 'line',
+                toolbar: {
+                show: false
+                },
+                zoom: {
+                enabled: false
+                }
+            },
+            grid: {
+                borderColor: '#1fe076',
+                strokeDashArray: 5,
+                xaxis: {
+                lines: {
+                    show: true
+                }
+                },
+                yaxis: {
+                lines: {
+                    show: false
+                }
+                },
+                padding: {
+                top: -30,
+                bottom: 0
+                }
+            },
+            stroke: {
+                width: 3
+            },
+            colors: ['#c9762c','#1fe076'],
+            series: [
+
+                {
+                    name: 'الإشتراكات',
+                    data: @json($payments->values()->toArray())
+                },
+                {
+                    name: 'المشتركين',
+                    data: @json($subscriptions->values()->toArray())
+                }
+
+            ],
+            markers: {
+                size: 5,
+                colors: ['#c9762c','#1fe076'],
+                strokeColors: '#1fe076',
+                strokeWidth: 2,
+                strokeOpacity: 1,
+                strokeDashArray: 0,
+                fillOpacity: 0,
+                shape: 'circle',
+                radius: 2,
+                hover: {
+                size: 9
+                }
+            },
+            xaxis: {
+                labels: {
+                show: true,
+                style: {
+                    fontSize: '15px'
+                }
+                },
+                axisBorder: {
+                show: false
+                },
+                axisTicks: {
+                show: false
+                },
+                categories: @json($subscriptions->keys()->toArray())
+            },
+            yaxis: {
+                show: false
+            },
+            tooltip: {
+                x: {
+                show: false
+                }
+            }
+        };
+        if (typeof areaChartEl !== undefined && areaChartEl !== null) {
+        var areaChart = new ApexCharts(areaChartEl, areaChartConfig);
+        areaChart.render();
+        }
+
+        // Line Chart - 2
+        // --------------------------------------------------------------------
+        // var areaChartEl = document.querySelector('#line-area-chart-2'),
+        // areaChartConfig = {
+        //     chart: {
+        //         height: 200,
+        //         type: 'line',
+        //         toolbar: {
+        //         show: false
+        //         },
+        //         zoom: {
+        //         enabled: false
+        //         }
+        //     },
+        //     grid: {
+        //         borderColor: '#c9762c',
+        //         strokeDashArray: 5,
+        //         xaxis: {
+        //         lines: {
+        //             show: true
+        //         }
+        //         },
+        //         yaxis: {
+        //         lines: {
+        //             show: false
+        //         }
+        //         },
+        //         padding: {
+        //         top: -30,
+        //         bottom: -10
+        //         }
+        //     },
+        //     stroke: {
+        //         width: 3
+        //     },
+        //     colors: ['#c9762c','#c9762c'],
+        //     series: [
+        //         {
+        //             name: 'الإشتراكات',
+        //             data: @json($payments->values()->toArray())
+        //         }
+        //     ],
+        //     markers: {
+        //         size: 5,
+        //         colors: '#c9762c',
+        //         strokeColors: '#c9762c',
+        //         strokeWidth: 2,
+        //         strokeOpacity: 1,
+        //         strokeDashArray: 0,
+        //         fillOpacity: 0,
+        //         discrete: [
+        //         {
+        //             seriesIndex: 0,
+        //             dataPointIndex: 3,
+        //             fillColor: '#ffffff',
+        //             strokeWidth: 5,
+        //             strokeOpacity: 1,
+        //             size: 7
+        //         }
+        //         ],
+        //         shape: 'circle',
+        //         radius: 2,
+        //         hover: {
+        //         size: 9
+        //         }
+        //     },
+        //     xaxis: {
+        //         labels: {
+        //         show: true,
+        //         style: {
+        //             fontSize: '5px'
+        //         }
+        //         },
+        //         axisBorder: {
+        //         show: false
+        //         },
+        //         axisTicks: {
+        //         show: false
+        //         },
+        //     },
+        //     xaxis: {
+        //         categories: @json($subscriptions->keys()->toArray())
+        //     },
+        //     yaxis: {
+        //         show: false
+        //     },
+        //     tooltip: {
+        //         x: {
+        //         show: false
+        //         }
+        //     }
+        // };
+        // if (typeof areaChartEl !== undefined && areaChartEl !== null) {
+        // var areaChart = new ApexCharts(areaChartEl, areaChartConfig);
+        // areaChart.render();
+        // }
+
+        // Session Chart
+        // --------------------------------------------------------------------
+        var $sessionChart = document.querySelector('#session-chart');
+        sessionChartOptions = {
+            chart: {
+            type: 'donut',
+            height: 300,
+            toolbar: {
+                show: false
+            }
+            },
+            dataLabels: {
+            enabled: false
+            },
+            series: [58.6, 34.9, 6.5],
+            legend: { show: false },
+            comparedResult: [2, -3, 8],
+            labels: ['Desktop', 'Mobile', 'Tablet'],
+            stroke: { width: 0 },
+            colors: [window.colors.solid.primary, window.colors.solid.warning, window.colors.solid.danger]
+        };
+        sessionChart = new ApexCharts($sessionChart, sessionChartOptions);
+        sessionChart.render();
+
+        });
+
     </script>
 @endsection
 {{-- /JS --}}

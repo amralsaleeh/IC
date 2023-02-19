@@ -89,10 +89,10 @@
                     </div>
                     <span class="avatar">
                         @if ( Auth::user()->gender == 1 )
-                                <img src="{{ asset('app-assets/images/avatars/male.svg') }}" alt="avatar" width="40" height="40">
-                            @else
-                                <img src="{{ asset('app-assets/images/avatars/female.svg') }}" alt="avatar" width="40" height="40">
-                            @endif
+                            <img src="{{ asset('app-assets/images/avatars/male.svg') }}" alt="avatar" width="40" height="40">
+                        @else
+                            <img src="{{ asset('app-assets/images/avatars/female.svg') }}" alt="avatar" width="40" height="40">
+                        @endif
                         <span class="avatar-status-online"></span>
                     </span>
                 </a>

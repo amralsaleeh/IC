@@ -264,6 +264,19 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
 /*============================
     Chart
 ============================*/
+.apexcharts-tooltip * {
+    font-family: 'GumelaArabic-Regular' !important;
+    font-size: 13px;
+}
+.dark-layout .apexcharts-canvas .apexcharts-legend-series .apexcharts-legend-text {
+    font-family: 'GumelaArabic-Regular' !important;
+}
+.apexcharts-text tspan {
+    font-family: 'GumelaArabic-Regular' !important;
+}
+.dark-layout .apexcharts-canvas .apexcharts-tooltip {
+    direction: ltr;
+}
 .dark-layout .apexcharts-canvas .apexcharts-marker {
     stroke: #ffffff;
 }
