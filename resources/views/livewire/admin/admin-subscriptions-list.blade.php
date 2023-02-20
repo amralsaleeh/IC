@@ -94,39 +94,19 @@
                         </div>
                         <div class="card-body">
                             <div id="session-chart" class="my-1"></div>
-                            <div class="d-flex justify-content-between mb-1">
-                                <div class="d-flex align-items-center">
-                                    <i data-feather="monitor" class="font-medium-2 text-primary"></i>
-                                    <span class="fw-bold ms-75 me-25">Desktop</span>
-                                    <span>- 58.6%</span>
+                            @for ($i = 0; $i < 3; $i++)
+                                <div class="d-flex justify-content-between mb-1">
+                                    <div class="d-flex align-items-center">
+                                        {{-- <i data-feather="monitor" class="font-medium-2 text-primary"></i> --}}
+                                        <img src="{{ asset("app-assets/fonts/flag-icon-css/flags/4x3/".$i.".svg") }}" alt="avatar" width="20" height="20">
+                                        <span class="fw-bold ms-75 me-25">{{ $this->bestCountries->keys()->toArray()[$i] }}</span>
+                                    </div>
+                                    <div>
+                                        <span>{{ $this->bestCountries->values()->toArray()[$i] }}</span>
+                                        <i data-feather="bar-chart-2" class="text-success"></i>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span>2%</span>
-                                    <i data-feather="arrow-up" class="text-success"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-1">
-                                <div class="d-flex align-items-center">
-                                    <i data-feather="monitor" class="font-medium-2 text-primary"></i>
-                                    <span class="fw-bold ms-75 me-25">Desktop</span>
-                                    <span>- 58.6%</span>
-                                </div>
-                                <div>
-                                    <span>2%</span>
-                                    <i data-feather="arrow-up" class="text-success"></i>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-1">
-                                <div class="d-flex align-items-center">
-                                    <i data-feather="monitor" class="font-medium-2 text-primary"></i>
-                                    <span class="fw-bold ms-75 me-25">Desktop</span>
-                                    <span>- 58.6%</span>
-                                </div>
-                                <div>
-                                    <span>2%</span>
-                                    <i data-feather="arrow-up" class="text-success"></i>
-                                </div>
-                            </div>
+                            @endfor
                         </div>
                     </div>
                 </div>
@@ -473,10 +453,10 @@
             dataLabels: {
             enabled: false
             },
-            series: [58.6, 34.9, 6.5],
+            series: @json($bestCountries->values()->toArray()),
             legend: { show: false },
             comparedResult: [2, -3, 8],
-            labels: ['Desktop', 'Mobile', 'Tablet'],
+            labels: @json($bestCountries->keys()->toArray()),
             stroke: { width: 0 },
             colors: [window.colors.solid.primary, window.colors.solid.warning, window.colors.solid.danger]
         };

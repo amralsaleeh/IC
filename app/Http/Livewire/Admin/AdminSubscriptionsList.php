@@ -18,7 +18,6 @@ class AdminSubscriptionsList extends Component
     public $monthlyStatics = 1;
 
     public $bestCountries;
-
     public $bestBuyers;
 
     // Render
@@ -77,13 +76,12 @@ class AdminSubscriptionsList extends Component
         //         ->pluck('count','year(created_at)');
         // }
 
-        $this->bestCountries = DB::table('subscriptions')
-            ->join('users', 'users.id', '=', 'subscriptions.users_id')
-            ->selectRaw('users_id, first_name, gender, residence_country, count(*) as subscriptionsCount, sum(payment) as paymentSum')
-            ->groupBy('users_id')
-            ->orderBy('paymentSum' , 'desc')
-            ->take(5)
-            ->get();
+        $this->bestCountries = DB::table('users')
+            ->selectRaw('count(residence_country) as residence_country_count , residence_country')
+            ->groupBy('residence_country')
+            ->orderBy('residence_country_count' , 'desc')
+            ->pluck('residence_country_count','residence_country')
+            ->take(5);
 
         $this->bestBuyers = DB::table('subscriptions')
             ->join('users', 'users.id', '=', 'subscriptions.users_id')
@@ -93,7 +91,7 @@ class AdminSubscriptionsList extends Component
             ->take(5)
             ->get();
 
-        // dd( $this->bestBuyers);
+        // dd($this->bestCountries->keys()->toArray()[0]);
     }
 
     // Show New Coupon Modal
