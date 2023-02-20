@@ -78,7 +78,7 @@
                     <div class="user-nav d-sm-flex d-none">
                         <span class="user-name fw-bolder">
                             @if (Auth::check())
-                                {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
+                                {{ Auth::user()->full_name }}
                             @else
                                 مجد طلال ستوت
                             @endif

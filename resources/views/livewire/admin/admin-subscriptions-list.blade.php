@@ -290,7 +290,7 @@
             series: [
 
                 {
-                    name: 'الإشتراكات',
+                    name: 'الإشتراكات ($)',
                     data: @json($payments->values()->toArray())
                 },
                 {
