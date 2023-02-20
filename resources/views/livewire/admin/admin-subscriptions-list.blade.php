@@ -98,8 +98,8 @@
                                 <div class="d-flex justify-content-between mb-1">
                                     <div class="d-flex align-items-center">
                                         {{-- <i data-feather="monitor" class="font-medium-2 text-primary"></i> --}}
-                                        <img src="{{ asset("app-assets/fonts/flag-icon-css/flags/4x3/".$i.".svg") }}" alt="avatar" width="20" height="20">
-                                        <span class="fw-bold ms-75 me-25">{{ $this->bestCountries->keys()->toArray()[$i] }}</span>
+                                        <img src="{{ asset("app-assets/fonts/flag-icon-css/flags/4x3/".strtolower( $this->getCountryISO2($this->bestCountries->keys()->toArray()[$i]) ).".svg") }}" alt="avatar" width="20" height="15">
+                                        <span class="fw-bold ms-75 me-25">{{ $this->getCountryNameAr($this->bestCountries->keys()->toArray()[$i]) }}</span>
                                     </div>
                                     <div>
                                         <span>{{ $this->bestCountries->values()->toArray()[$i] }}</span>
@@ -127,8 +127,8 @@
                                             @endif
                                         </div>
                                         <div class="my-auto">
-                                            <h6 class="mb-0">{{ $bestBuyer->first_name }}</h6>
-                                            <small>{{ $bestBuyer->residence_country }}</small>
+                                            <h6 class="mb-0">{{ $bestBuyer->full_name }}</h6>
+                                            <small>{{ $this->getCountryNameAr($bestBuyer->residence_country) }}</small>
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center">

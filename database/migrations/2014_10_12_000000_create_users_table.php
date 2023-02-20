@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('last_name');
             $table->boolean('gender');
             $table->date('birth_date');
-            $table->string('residence_country');
-            $table->string('homeland_country');
+            $table->integer('residence_country')->nullable()->index('residence_country_users_FK');;
+            $table->integer('homeland_country')->nullable()->index('homeland_country_users_FK');;
             $table->string('email')->unique();
             $table->string('username');
             $table->string('password');

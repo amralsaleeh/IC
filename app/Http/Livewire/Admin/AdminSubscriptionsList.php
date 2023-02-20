@@ -77,21 +77,34 @@ class AdminSubscriptionsList extends Component
         // }
 
         $this->bestCountries = DB::table('users')
-            ->selectRaw('count(residence_country) as residence_country_count , residence_country')
-            ->groupBy('residence_country')
+            ->join('countries', 'countries.id', '=', 'users.residence_country')
+            ->selectRaw('count(residence_country) as residence_country_count , countries.id')
+            ->groupBy('countries.id')
             ->orderBy('residence_country_count' , 'desc')
-            ->pluck('residence_country_count','residence_country')
-            ->take(5);
+            ->pluck('residence_country_count','countries.id')
+            ->take(3);
 
         $this->bestBuyers = DB::table('subscriptions')
             ->join('users', 'users.id', '=', 'subscriptions.users_id')
-            ->selectRaw('users_id, first_name, gender, residence_country, count(*) as subscriptionsCount, sum(payment) as paymentSum')
+            ->selectRaw('users_id, full_name, gender, residence_country, count(*) as subscriptionsCount, sum(payment) as paymentSum')
             ->groupBy('users_id')
             ->orderBy('paymentSum' , 'desc')
             ->take(5)
             ->get();
 
-        // dd($this->bestCountries->keys()->toArray()[0]);
+        // dd($this->bestCountries);
+    }
+
+    // Get country name (ar)
+    public function getCountryNameAr( $iso2 )
+    {
+        return DB::table('countries')->where('id', '=', $iso2)->first()->name_ar;
+    }
+
+    // Get country iso (2)
+    public function getCountryISO2( $iso2 )
+    {
+        return DB::table('countries')->where('id', '=', $iso2)->first()->iso2;
     }
 
     // Show New Coupon Modal
