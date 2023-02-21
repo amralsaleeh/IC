@@ -84,7 +84,11 @@
                             @endif
                         </span>
                         <span class="user-status">
-                            تدريب أونلاين
+                            @if ( Auth::user()->role == 'admin' )
+                                الإدارة العامة
+                            @else
+                                تدريب أونلاين
+                            @endif
                         </span>
                     </div>
                     <span class="avatar">
