@@ -18,38 +18,40 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
 
-        {{-- <h2 style="text-align:center">iCoach</h2>
-        <hr style="margin: 15px 20px"> --}}
+        <h2 style="text-align:center; color:#f8991d"> قائمة الإدارة </h2>
+        <hr style="margin: 15px 20px">
 
-        @if(Auth::user()->role == 'admin')
+        @if( Auth::user()->role == 'admin' )
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate">الصفحة الرئيسية</span></a></li>
+                <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('admin/dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate">الصفحة الرئيسية</span></a></li>
 
                 <li class="navigation-header"><span>الخطط والبرامج</span><i data-feather="more-horizontal"></i></li>
-                <li class="nav-item {{ request()->is('exercise') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('exercise') }}"><i data-feather="activity"></i><span class="menu-title text-truncate">التمارين الرياضية</span></a></li>
-                <li class="nav-item {{ request()->is('diet') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('diet') }}"><i data-feather="coffee"></i><span class="menu-title text-truncate">الحمية الغذائية</span></a></li>
+                <li class="nav-item {{ request()->is('exercise') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('admin/exercise') }}"><i data-feather="activity"></i><span class="menu-title text-truncate">التمارين الرياضية</span></a></li>
+                <li class="nav-item {{ request()->is('diet') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('admin/diet') }}"><i data-feather="coffee"></i><span class="menu-title text-truncate">الحمية الغذائية</span></a></li>
 
                 <li class="navigation-header"><span>السجلات</span><i data-feather="more-horizontal"></i></li>
-                <li class="nav-item {{ request()->is('statistics') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('statistics') }}"><i data-feather="clipboard"></i><span class="menu-title text-truncate">الإحصائيات</span></a></li>
+                <li class="nav-item {{ request()->is('statistics') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('admin/statistics') }}"><i data-feather="clipboard"></i><span class="menu-title text-truncate">الإحصائيات</span></a></li>
 
                 <li class="navigation-header"><span>الدفعات المالية</span><i data-feather="more-horizontal"></i></li>
-                <li class="nav-item {{ request()->is('subscriptions') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('subscriptions') }}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate">إدارة الإشتراكات</span></a></li>
+                <li class="nav-item {{ request()->is('subscriptions') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('admin/subscriptions') }}"><i data-feather="dollar-sign"></i><span class="menu-title text-truncate">إدارة الإشتراكات</span></a></li>
 
                 <li class="navigation-header"><span>التعليمات</span><i data-feather="more-horizontal"></i></li>
-                <li class="nav-item {{ request()->is('guide') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('guide') }}"><i data-feather="file"></i><span class="menu-title text-truncate">القواعد الإرشادية</span></a></li>
-                <li class="nav-item {{ request()->is('terms') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('terms') }}"><i data-feather="file"></i><span class="menu-title text-truncate">شروط الخدمة</span></a></li>
+                <li class="nav-item {{ request()->is('guide') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('admin/guide') }}"><i data-feather="file"></i><span class="menu-title text-truncate">القواعد الإرشادية</span></a></li>
+                <li class="nav-item {{ request()->is('terms') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('admin/terms') }}"><i data-feather="file"></i><span class="menu-title text-truncate">شروط الخدمة</span></a></li>
 
-                <hr style="margin: 15px 60px">
+                {{-- <hr style="margin: 15px 60px"> --}}
 
-                <div class="menu-expanded menu-accordion footer-menu" style="margin-bottom: 50px;text-align: center;font-size: 15px;color: #555;">
+                {{-- <div class="menu-expanded menu-accordion footer-menu" style="margin-bottom: 50px;text-align: center;font-size: 15px;color: #555;">
                     <p class="clearfix mb-0">
                         <span class="float-md d-block">خدمة التدريب عن بعد</span>
                         <span class="float-md d-block">النسخة _ 0.7.1</span>
                     </p>
-                </div>
+                </div> --}}
             </ul>
 
-            <hr> <h1>User Side Bar</h1> <hr>
+            <hr style="margin: 15px 20px">
+            <h2 style="text-align:center; color:#f8991d"> قائمة المتدربين </h2>
+            <hr style="margin: 15px 20px">
 
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
                 <li class="nav-item {{ request()->is('dashboard') ? 'active' : '' }}"><a class="d-flex align-items-center" href="{{ route('dashboard') }}"><i data-feather="home"></i><span class="menu-title text-truncate">الصفحة الرئيسية</span></a></li>
@@ -105,6 +107,7 @@
                 </div>
             </ul>
         @endif
+
     </div>
 </div>
 
