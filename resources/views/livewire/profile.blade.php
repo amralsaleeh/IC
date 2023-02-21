@@ -310,6 +310,6 @@
 @endsection
 
 @section('page-script')
-
+    <script src="{{ asset('app-assets/js/scripts/forms/form-number-input.js') }}"></script>
 @endsection
 {{-- /JS --}}
