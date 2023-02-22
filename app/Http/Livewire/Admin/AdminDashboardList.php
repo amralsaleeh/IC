@@ -15,6 +15,9 @@ class AdminDashboardList extends Component
     public $inActiveUsers;
     public $allUsers;
 
+    public $lastMonthPaymentsSum;
+    public $lastYearPaymentsSum;
+
     public function render()
     {
         $this->birthdaysUpcoming =
@@ -46,7 +49,22 @@ class AdminDashboardList extends Component
         $this->allUsers = DB::table('users')
             ->get();
 
-        // dd($this->almostFinishedUsers);
+        $this->lastMonthPaymentsSum = DB::table('subscriptions')
+            ->selectRaw('sum(payment) as lastMonthPaymentsSum')
+            ->whereYear('created_at', '=', Carbon::now()->format('Y'))
+            ->whereMonth('created_at', '=', Carbon::now()->format('m'))
+            ->pluck('lastMonthPaymentsSum');
+
+            if ($this->lastMonthPaymentsSum[0] == null) $this->lastMonthPaymentsSum = 0; else $this->lastMonthPaymentsSum = $this->lastMonthPaymentsSum[0];
+
+        $this->lastYearPaymentsSum = DB::table('subscriptions')
+            ->selectRaw('sum(payment) as lastYearPaymentsSum')
+            ->whereYear('created_at', '=', Carbon::now()->format('Y'))
+            ->pluck('lastYearPaymentsSum');
+
+            if ($this->lastYearPaymentsSum[0] == null) $this->lastYearPaymentsSum = 0; else $this->lastYearPaymentsSum = $this->lastYearPaymentsSum[0];
+
+        // dd($this->lastMonthPaymentsSum);
 
         return view('livewire.admin.admin-dashboard-list');
     }

@@ -119,7 +119,7 @@
                             <i data-feather="trending-up" class="font-medium-5"></i>
                           </div>
                         </div>
-                        <h2 class="fw-bolder">125 $</h2>
+                        <h2 class="fw-bolder">{{ $lastMonthPaymentsSum }} $</h2>
                         <p class="card-text">أخر 30 يوم</p>
                         <div id="profits-monthly-chart"></div>
                       </div>
@@ -133,7 +133,7 @@
                             <i data-feather="dollar-sign" class="font-medium-5"></i>
                           </div>
                         </div>
-                        <h2 class="fw-bolder">3100 $</h2>
+                        <h2 class="fw-bolder">{{ $lastYearPaymentsSum }} $</h2>
                         <p class="card-text">أخر 365 يوم</p>
                         <div id="profits-all-chart"></div>
                       </div>
