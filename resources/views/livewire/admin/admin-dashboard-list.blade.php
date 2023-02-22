@@ -36,8 +36,10 @@
                       <div class="card-body">
                         <div class="avatar bg-light-info p-50 mb-1">
                           <div class="avatar-content">
-                            <i data-feather="calendar" class="font-medium-5"></i>
-                          </div>
+                            <a href="">
+                                <i data-feather="calendar" stroke="#00CFE8" class="font-medium-5"></i>
+                            </a>
+                            </div>
                         </div>
                         <h2 class="fw-bolder">{{ count($birthdaysUpcoming) }}</h2>
                         <p class="card-text">أعياد الميلاد</p>
@@ -49,7 +51,9 @@
                     <div class="card-body">
                       <div class="avatar bg-light-success p-50 mb-1">
                         <div class="avatar-content">
-                          <i data-feather="user-check" class="font-medium-5"></i>
+                            <a href="">
+                                <i data-feather="user-check" stroke="#28C76F" class="font-medium-5"></i>
+                            </a>
                         </div>
                       </div>
                       <h2 class="fw-bolder">{{ count($activeUsers) }}</h2>
@@ -62,7 +66,9 @@
                     <div class="card-body">
                       <div class="avatar bg-light-warning p-50 mb-1">
                         <div class="avatar-content">
-                          <i data-feather="user-minus" class="font-medium-5"></i>
+                            <a href="">
+                                <i data-feather="user-minus" stroke="#c9762c" class="font-medium-5"></i>
+                            </a>
                         </div>
                       </div>
                       <h2 class="fw-bolder">{{ count($almostFinishedUsers) }}</h2>
@@ -75,7 +81,9 @@
                     <div class="card-body">
                       <div class="avatar bg-light-danger p-50 mb-1">
                         <div class="avatar-content">
-                          <i data-feather="user-x" class="font-medium-5"></i>
+                            <a href="">
+                                <i data-feather="user-x" stroke="#EA5455" class="font-medium-5"></i>
+                            </a>
                         </div>
                       </div>
                       <h2 class="fw-bolder">{{ count($inActiveUsers)  }}</h2>
@@ -88,7 +96,9 @@
                     <div class="card-body">
                       <div class="avatar bg-light-secondary p-50 mb-1">
                         <div class="avatar-content">
-                          <i data-feather="flag" class="font-medium-5"></i>
+                            <a href="">
+                                <i data-feather="flag" stroke="#82868B" class="font-medium-5"></i>
+                            </a>
                         </div>
                       </div>
                       <h2 class="fw-bolder">-</h2>
@@ -101,7 +111,9 @@
                     <div class="card-body">
                       <div class="avatar bg-light-secondary p-50 mb-1">
                         <div class="avatar-content">
-                          <i data-feather="users" class="font-medium-5"></i>
+                            <a href="">
+                                <i data-feather="users" stroke="#82868B" class="font-medium-5"></i>
+                            </a>
                         </div>
                       </div>
                       <h2 class="fw-bolder">{{ count($allUsers) }}</h2>
@@ -116,7 +128,9 @@
                       <div class="card-body" style="padding: 1.5rem 0.1rem 1.5rem 0.1rem;">
                         <div class="avatar bg-light-dark p-50 mb-1" style="border: 1px solid #404040;">
                           <div class="avatar-content">
-                            <i data-feather="trending-up" class="font-medium-5"></i>
+                            <a href="">
+                                <i data-feather="trending-up" stroke="#FFFFFF" class="font-medium-5"></i>
+                            </a>
                           </div>
                         </div>
                         <h2 class="fw-bolder">{{ $lastMonthPaymentsSum }} $</h2>
@@ -130,7 +144,9 @@
                       <div class="card-body" style="padding: 1.5rem 0.1rem 1.5rem 0.1rem;">
                         <div class="avatar bg-light-dark p-50 mb-1" style="border: 1px solid #404040;">
                           <div class="avatar-content">
-                            <i data-feather="dollar-sign" class="font-medium-5"></i>
+                            <a href="">
+                                <i data-feather="dollar-sign" stroke="#FFFFFF" class="font-medium-5"></i>
+                            </a>
                           </div>
                         </div>
                         <h2 class="fw-bolder">{{ $lastYearPaymentsSum }} $</h2>
