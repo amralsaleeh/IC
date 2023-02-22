@@ -39,7 +39,7 @@
                             <i data-feather="calendar" class="font-medium-5"></i>
                           </div>
                         </div>
-                        <h2 class="fw-bolder">0</h2>
+                        <h2 class="fw-bolder">{{ count($birthdaysUpcoming) }}</h2>
                         <p class="card-text">أعياد الميلاد</p>
                       </div>
                     </div>
@@ -52,7 +52,7 @@
                           <i data-feather="user-check" class="font-medium-5"></i>
                         </div>
                       </div>
-                      <h2 class="fw-bolder">3</h2>
+                      <h2 class="fw-bolder">{{ count($activeUsers) }}</h2>
                       <p class="card-text">فعال</p>
                     </div>
                   </div>
@@ -65,7 +65,7 @@
                           <i data-feather="user-minus" class="font-medium-5"></i>
                         </div>
                       </div>
-                      <h2 class="fw-bolder">1</h2>
+                      <h2 class="fw-bolder">{{ count($almostFinishedUsers) }}</h2>
                       <p class="card-text">معلق</p>
                     </div>
                   </div>
@@ -78,7 +78,7 @@
                           <i data-feather="user-x" class="font-medium-5"></i>
                         </div>
                       </div>
-                      <h2 class="fw-bolder">102</h2>
+                      <h2 class="fw-bolder">{{ count($inActiveUsers)  }}</h2>
                       <p class="card-text">مجمد</p>
                     </div>
                   </div>
@@ -91,7 +91,7 @@
                           <i data-feather="flag" class="font-medium-5"></i>
                         </div>
                       </div>
-                      <h2 class="fw-bolder">15</h2>
+                      <h2 class="fw-bolder">-</h2>
                       <p class="card-text">مهتم</p>
                     </div>
                   </div>
@@ -104,7 +104,7 @@
                           <i data-feather="users" class="font-medium-5"></i>
                         </div>
                       </div>
-                      <h2 class="fw-bolder">105</h2>
+                      <h2 class="fw-bolder">{{ count($allUsers) }}</h2>
                       <p class="card-text">مشترك</p>
                     </div>
                   </div>
