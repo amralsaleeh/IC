@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('id', true);
             $table->string('name');
             $table->integer('type');
-            $table->boolean('gender');
+            $table->boolean('plan_gender_type');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
