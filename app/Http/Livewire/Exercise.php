@@ -11,15 +11,6 @@ class Exercise extends Component
 {
     public $trainingPlanDetails = [[],[],[],[],[],[]];
 
-    // public $trainingPlanDetails = [
-    //     'الأول' => [],
-    //     'الثاني' => [],
-    //     'الثالث' => [],
-    //     'الرابع' => [],
-    //     'الخامس' => [],
-    //     'السادس' => []
-    // ];
-
     public function render()
     {
         $trainingPlan = TrainingPlansModel::with('exercises')->find(Auth::user()->training_plans_id);
@@ -37,17 +28,6 @@ class Exercise extends Component
                 'is_series' => $exercise->pivot->is_series,
              ]);
         }
-
-        // foreach($this->trainingPlanDetails as $day)
-        // {   
-        //     foreach ($day as $exercise)
-        //     {
-        //         dd($exercise);
-        //     }
-        // }
-
-        // $this->trainingPlanDetails = array_filter($this->trainingPlanDetails);
-        // dd($this->trainingPlanDetails);
 
         return view('livewire.exercise');
     }
