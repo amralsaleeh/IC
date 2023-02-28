@@ -79,7 +79,15 @@
                                                             </div>
                                                         @endforeach
                                                     @else
-                                                        <h3 style="text-align: center"> إستراحة محارب </h3>
+                                                    <div style="text-align:center">
+                                                        @if ( Auth::user()->gender == 1 )
+                                                            <img class="rounded" style="text-align: center" src="app-assets/images/rest/male.png" width="100" height="100" alt="Recent Post Pic">
+                                                            <h5 style="margin-top: 5px"> إستراحة محارب </h5>
+                                                        @else
+                                                            <img class="rounded" style="text-align: center" src="app-assets/images/rest/female.png" width="100" height="100" alt="Recent Post Pic">
+                                                            <h5 style="margin-top: 5px"> إستراحة محاربة </h5>
+                                                        @endif
+                                                    </div>
                                                     @endif
                                                 </div>
                                             </div>
