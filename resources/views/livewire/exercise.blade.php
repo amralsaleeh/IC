@@ -41,165 +41,50 @@
 
                         <div class="card-body">
                             <div class="accordion accordion-margin" id="accordionExample">
-                                <div class="card accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button
-                                        class="accordion-button collapsed"
-                                        data-bs-toggle="collapse"
-                                        role="button"
-                                        data-bs-target="#collapseOne"
-                                        aria-expanded="false"
-                                        aria-controls="collapseOne"
-                                        >
-                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">اليوم الأول</h4>
-                                        </button>
-                                    </h2>
+                                @for ($i = 0; $i < count($trainingPlanDetails); $i++)
+                                        <div class="card accordion-item">
+                                            <h2 class="accordion-header" id="heading{{ $i }}">
+                                                <button
+                                                class="accordion-button collapsed"
+                                                data-bs-toggle="collapse"
+                                                role="button"
+                                                data-bs-target="#collapseTwo{{ $i }}"
+                                                aria-expanded="false"
+                                                aria-controls="collapseTwo{{ $i }}"
+                                                >
+                                                <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">{{ 'اليوم ( ' . $i+1 . ' )' }}</h4>
+                                                </button>
+                                            </h2>
 
-                                    <div
-                                        id="collapseOne"
-                                        class="accordion-collapse collapse"
-                                        aria-labelledby="headingOne"
-                                        data-bs-parent="#accordionExample"
-                                    >
-                                        <div class="accordion-body">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                    <th style="border-radius: 0px 10px 0px 0px;">التمرين</th>
-                                                    <th>العدات</th>
-                                                    <th style="border-radius: 10px 0px 0px 0px;">الإيقاع</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">DUMBBEL ROW</a>
-                                                        </td>
-                                                        <td>8 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">CABLE PULL DOWN</a>
-                                                        </td>
-                                                        <td>12 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">BICEPS CURL MACHINE</a>
-                                                        </td>
-                                                        <td>8 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">BICEPS CABLE CURL</a>
-                                                        </td>
-                                                        <td>12 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">SHRUG</a>
-                                                        </td>
-                                                        <td>8 * 3</td>
-                                                        <td>1-2-2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">FACE PULL</a>
-                                                        </td>
-                                                        <td>12 * 3</td>
-                                                        <td>1-2-3</td>
-                                                    </tr>
-                                                </tbody>
-                                                </table>
+                                            <div
+                                                id="collapseTwo{{ $i }}"
+                                                class="accordion-collapse collapse"
+                                                aria-labelledby="heading{{ $i }}"
+                                                data-bs-parent="#accordionExample"
+                                            >
+                                                <div class="accordion-body">
+                                                    @if ($trainingPlanDetails[$i] != null)
+                                                        @foreach ($trainingPlanDetails[$i] as $exercise)
+                                                            <div class="d-flex mb-2">
+                                                                <a href={{ $exercise['link'] }} class="me-2">
+                                                                    <img class="rounded" src="app-assets/images/exercises/default{{-- {{ $exercise['image'] }} --}}.jpg" width="80" height="80" alt="Recent Post Pic">
+                                                                </a>
+                                                                <div class="blog-info">
+                                                                    <h6 class="blog-recent-post-title" style="font-size: 1.2rem">
+                                                                        <a href={{ $exercise['link'] }} class="text-body-heading">{{ $exercise['name'] }}</a>
+                                                                    </h6>
+                                                                    <div class="text-muted mb-0" style="font-size: 1.2rem">{{ '( ' . $exercise['reps']  . ' )  * ' . $exercise['sets'] }}</div>
+                                                                    <div class="text-muted mb-0">{{ $exercise['tempo'] }}</div>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    @else
+                                                        <h3 style="text-align: center"> إستراحة محارب </h3>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="card accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button
-                                        class="accordion-button collapsed"
-                                        data-bs-toggle="collapse"
-                                        role="button"
-                                        data-bs-target="#collapseTwo"
-                                        aria-expanded="false"
-                                        aria-controls="collapseTwo"
-                                        >
-                                        <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">اليوم الثاني</h4>
-                                        </button>
-                                    </h2>
-
-                                    <div
-                                        id="collapseTwo"
-                                        class="accordion-collapse collapse"
-                                        aria-labelledby="headingTwo"
-                                        data-bs-parent="#accordionExample"
-                                    >
-                                        <div class="accordion-body">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                    <th style="border-radius: 0px 10px 0px 0px;">التمرين</th>
-                                                    <th>العدات</th>
-                                                    <th style="border-radius: 10px 0px 0px 0px;">الإيقاع</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">DUMBBEL ROW</a>
-                                                        </td>
-                                                        <td>8 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">CABLE PULL DOWN</a>
-                                                        </td>
-                                                        <td>12 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">BICEPS CURL MACHINE</a>
-                                                        </td>
-                                                        <td>8 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">BICEPS CABLE CURL</a>
-                                                        </td>
-                                                        <td>12 * 3</td>
-                                                        <td>1-2-1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">SHRUG</a>
-                                                        </td>
-                                                        <td>8 * 3</td>
-                                                        <td>1-2-2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#" class="fw-bold">FACE PULL</a>
-                                                        </td>
-                                                        <td>12 * 3</td>
-                                                        <td>1-2-3</td>
-                                                    </tr>
-                                                </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endfor
                             </div>
                         </div>
                         <div class="card-body">

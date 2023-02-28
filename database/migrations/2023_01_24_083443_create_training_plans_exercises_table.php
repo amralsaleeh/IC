@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('training_plans-exercises', function (Blueprint $table) {
             $table->comment('');
             $table->integer('id', true);
-            $table->integer('exercises_id')->index('exercises_id_training_plans-exercises_FK');
             $table->integer('training_plans_id')->index('training_plans_id_training_plans-exercises_FK');
+            $table->integer('exercises_id')->index('exercises_id_training_plans-exercises_FK');
             $table->integer('day');
             $table->integer('sets');
             $table->string('reps');
