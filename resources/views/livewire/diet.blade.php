@@ -32,12 +32,44 @@
         <div class="content-body">
             <div class="row">
                 <div class="col-12">
+                    {{-- <div class="col-lg-4 col-md-6 col-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="card-title">Goal Overview</h4>
+                                <i data-feather="help-circle" class="font-medium-3 text-muted cursor-pointer"></i>
+                            </div>
+                            <div class="card-body p-0" style="position: relative;">
+                                <div id="goal-overview-radial-bar-chart" class="my-2" style="min-height: 205.633px;"><div id="apexchartslinw1pr8l" class="apexcharts-canvas apexchartslinw1pr8l apexcharts-theme-light" style="width: 398px; height: 205.633px;"><svg id="SvgjsSvg2505" width="398" height="205.63333333333335" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG2507" class="apexcharts-inner apexcharts-graphical" transform="translate(76.5, -10)"><defs id="SvgjsDefs2506"><clipPath id="gridRectMasklinw1pr8l"><rect id="SvgjsRect2509" width="251" height="217" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMasklinw1pr8l"><rect id="SvgjsRect2510" width="249" height="219" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><linearGradient id="SvgjsLinearGradient2515" x1="0" y1="1" x2="1" y2="1"><stop id="SvgjsStop2516" stop-opacity="1" stop-color="rgba(40,199,111,1)" offset="0"></stop><stop id="SvgjsStop2517" stop-opacity="1" stop-color="rgba(235,233,241,1)" offset="1"></stop><stop id="SvgjsStop2518" stop-opacity="1" stop-color="rgba(235,233,241,1)" offset="1"></stop></linearGradient><linearGradient id="SvgjsLinearGradient2525" x1="0" y1="1" x2="1" y2="1"><stop id="SvgjsStop2526" stop-opacity="1" stop-color="rgba(40,199,111,1)" offset="0"></stop><stop id="SvgjsStop2527" stop-opacity="1" stop-color="rgba(81,229,168,1)" offset="1"></stop><stop id="SvgjsStop2528" stop-opacity="1" stop-color="rgba(81,229,168,1)" offset="1"></stop></linearGradient><filter id="SvgjsFilter2530" filterUnits="userSpaceOnUse" width="200%" height="200%" x="-50%" y="-50%"><feFlood id="SvgjsFeFlood2531" flood-color="#000000" flood-opacity="0.1" result="SvgjsFeFlood2531Out" in="SourceGraphic"></feFlood><feComposite id="SvgjsFeComposite2532" in="SvgjsFeFlood2531Out" in2="SourceAlpha" operator="in" result="SvgjsFeComposite2532Out"></feComposite><feOffset id="SvgjsFeOffset2533" dx="1" dy="1" result="SvgjsFeOffset2533Out" in="SvgjsFeComposite2532Out"></feOffset><feGaussianBlur id="SvgjsFeGaussianBlur2534" stdDeviation="3 " result="SvgjsFeGaussianBlur2534Out" in="SvgjsFeOffset2533Out"></feGaussianBlur><feMerge id="SvgjsFeMerge2535" result="SvgjsFeMerge2535Out" in="SourceGraphic"><feMergeNode id="SvgjsFeMergeNode2536" in="SvgjsFeGaussianBlur2534Out"></feMergeNode><feMergeNode id="SvgjsFeMergeNode2537" in="[object Arguments]"></feMergeNode></feMerge><feBlend id="SvgjsFeBlend2538" in="SourceGraphic" in2="SvgjsFeMerge2535Out" mode="normal" result="SvgjsFeBlend2538Out"></feBlend></filter></defs><g id="SvgjsG2511" class="apexcharts-radialbar"><g id="SvgjsG2512"><g id="SvgjsG2513" class="apexcharts-tracks"><g id="SvgjsG2514" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 77.85670731707313 184.82445114399715 A 89.28658536585367 89.28658536585367 0 1 1 167.14329268292684 184.82445114399718" fill="none" fill-opacity="1" stroke="rgba(235,233,241,0.85)" stroke-opacity="1" stroke-linecap="round" stroke-width="3.5304878048780495" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathOrig="M 77.85670731707313 184.82445114399715 A 89.28658536585367 89.28658536585367 0 1 1 167.14329268292684 184.82445114399718"></path></g></g><g id="SvgjsG2520"><g id="SvgjsG2524" class="apexcharts-series apexcharts-radial-series" seriesName="seriesx1" rel="1" data:realIndex="0"><path id="SvgjsPath2529" d="M 77.85670731707313 184.82445114399715 A 89.28658536585367 89.28658536585367 0 1 1 210.6873193374061 121.46749921697622" fill="none" fill-opacity="0.85" stroke="url(#SvgjsLinearGradient2525)" stroke-opacity="1" stroke-linecap="round" stroke-width="7.060975609756099" stroke-dasharray="0" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="249" data:value="83" filter="url(#SvgjsFilter2530)" index="0" j="0" data:pathOrig="M 77.85670731707313 184.82445114399715 A 89.28658536585367 89.28658536585367 0 1 1 210.6873193374061 121.46749921697622"></path></g><circle id="SvgjsCircle2521" r="82.52134146341464" cx="122.5" cy="107.5" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG2522" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText2523" font-family="Helvetica, Arial, sans-serif" x="122.5" y="123.5" text-anchor="middle" dominant-baseline="auto" font-size="2.86rem" font-weight="600" fill="#5e5873" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">83%</text></g></g></g></g><line id="SvgjsLine2539" x1="0" y1="0" x2="245" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine2540" x1="0" y1="0" x2="245" y2="0" stroke-dasharray="0" stroke-width="0" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG2508" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
+                                <div class="row border-top text-center mx-0">
+                                    <div class="col-6 border-end py-1">
+                                        <p class="card-text text-muted mb-0">Completed</p>
+                                        <h3 class="fw-bolder mb-0">786,617</h3>
+                                    </div>
+                                    <div class="col-6 py-1">
+                                        <p class="card-text text-muted mb-0">In Progress</p>
+                                        <h3 class="fw-bolder mb-0">13,561</h3>
+                                    </div>
+                                </div>
+                            <div class="resize-triggers"><div class="expand-trigger"><div style="width: 399px; height: 323px;"></div></div><div class="contract-trigger"></div></div></div>
+                        </div>
+                    </div> --}}
+
                     <div class="card">
                         <div class="card-body pb-50" style="position: relative;">
-                            <h5>السعرات الحرارية</h5>
-                            <h2 class="fw-bolder mb-1">2136 سعرة</h2>
+                            <h5 class="pb-50">السعرات الحرارية</h5>
+                            {{-- <h2 class="fw-bolder mb-1">2136 سعرة</h2> --}}
                             <div class="progress progress-bar-success mb-1">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="45" aria-valuemax="100" style="width: 45%"></div>
+                            </div>
+                            <div class="row border-top text-center mx-0">
+                                <div class="col-6 border-end pt-1">
+                                    <p class="card-text text-muted mb-0">الإحتياج</p>
+                                    <h3 class="fw-bolder mb-0">2,617</h3>
+                                </div>
+                                <div class="col-6 pt-1">
+                                    <p class="card-text text-muted mb-0">الفعلي</p>
+                                    <h3 class="fw-bolder mb-0">2,300</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
