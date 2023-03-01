@@ -17,6 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->integer('id', true);
             $table->string('name');
+            $table->string('image');
             $table->integer('calories');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

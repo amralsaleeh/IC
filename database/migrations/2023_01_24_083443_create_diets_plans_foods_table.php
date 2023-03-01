@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('id', true);
             $table->integer('diets_plans_id')->index('diets_plans_id_diets_plans-foods_FK');
             $table->integer('foods_id')->index('foods_id_diets_plans-foods_FK');
-            $table->string('meal');
+            $table->integer('meal');
             $table->integer('quantity');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

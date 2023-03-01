@@ -42,56 +42,52 @@
                         <div class="card-body">
                             <div class="accordion accordion-margin" id="accordionExample">
                                 @for ($i = 0; $i < count($trainingPlanDetails); $i++)
-                                        <div class="card accordion-item">
-                                            <h2 class="accordion-header" id="heading{{ $i }}">
-                                                <button
-                                                class="accordion-button collapsed"
-                                                data-bs-toggle="collapse"
-                                                role="button"
-                                                data-bs-target="#collapseTwo{{ $i }}"
-                                                aria-expanded="false"
-                                                aria-controls="collapseTwo{{ $i }}"
-                                                >
-                                                <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">{{ 'اليوم ( ' . $i+1 . ' )' }}</h4>
-                                                </button>
-                                            </h2>
-
-                                            <div
-                                                id="collapseTwo{{ $i }}"
-                                                class="accordion-collapse collapse"
-                                                aria-labelledby="heading{{ $i }}"
-                                                data-bs-parent="#accordionExample"
+                                    <div class="card accordion-item">
+                                        <h2 class="accordion-header" id="heading{{ $i }}">
+                                            <button
+                                            class="accordion-button collapsed"
+                                            data-bs-toggle="collapse"
+                                            role="button"
+                                            data-bs-target="#collapse{{ $i }}"
+                                            aria-expanded="false"
+                                            aria-controls="collapse{{ $i }}"
                                             >
-                                                <div class="accordion-body">
-                                                    @if ($trainingPlanDetails[$i] != null)
-                                                        @foreach ($trainingPlanDetails[$i] as $exercise)
-                                                            <div class="d-flex mb-2">
-                                                                <a href={{ $exercise['link'] }} class="me-2">
-                                                                    <img class="rounded" src="app-assets/images/exercises/default{{-- {{ $exercise['image'] }} --}}.jpg" width="80" height="80" alt="Recent Post Pic">
-                                                                </a>
-                                                                <div class="blog-info">
-                                                                    <h6 class="blog-recent-post-title" style="font-size: 1.2rem">
-                                                                        <a href={{ $exercise['link'] }} class="text-body-heading">{{ $exercise['name'] }}</a>
-                                                                    </h6>
-                                                                    <div class="text-muted mb-0" style="font-size: 1.2rem">{{ '( ' . $exercise['reps']  . ' )  * ' . $exercise['sets'] }}</div>
-                                                                    <div class="text-muted mb-0">{{ $exercise['tempo'] }}</div>
-                                                                </div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list user-timeline-title-icon mx-50"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+                                            <h4 class="card-title mb-sm-0 mb-1" style="color: #f8991d ;margin-bottom: 0rem !important;">{{ 'اليوم ( ' . $i+1 . ' )' }}</h4>
+                                            </button>
+                                        </h2>
+
+                                        <div
+                                            id="collapse{{ $i }}"
+                                            class="accordion-collapse collapse"
+                                            aria-labelledby="heading{{ $i }}"
+                                            data-bs-parent="#accordionExample"
+                                        >
+                                            <div class="accordion-body">
+                                                @if ($trainingPlanDetails[$i] != null)
+                                                    @foreach ($trainingPlanDetails[$i] as $exercise)
+                                                        <div class="d-flex mb-2">
+                                                            <a href={{ $exercise['link'] }} class="me-2">
+                                                                <img class="rounded" src="app-assets/images/exercises/_Default{{-- {{ $exercise['image'] }} --}}.jpg" width="80" height="80" alt="Recent Post Pic">
+                                                            </a>
+                                                            <div class="blog-info">
+                                                                <h6 class="blog-recent-post-title" style="font-size: 1.2rem">
+                                                                    <a href={{ $exercise['link'] }} class="text-body-heading">{{ $exercise['name'] }}</a>
+                                                                </h6>
+                                                                <div class="text-muted mb-0" style="font-size: 1.2rem">{{ '( ' . $exercise['reps']  . ' )  * ' . $exercise['sets'] }}</div>
+                                                                <div class="text-muted mb-0">{{ $exercise['tempo'] }}</div>
                                                             </div>
-                                                        @endforeach
-                                                    @else
+                                                        </div>
+                                                    @endforeach
+                                                @else
                                                     <div style="text-align:center">
-                                                        @if ( Auth::user()->gender == 1 )
                                                             <img class="rounded" style="text-align: center" src="app-assets/images/rest/male.png" width="100" height="100" alt="Recent Post Pic">
                                                             <h5 style="margin-top: 5px"> إستراحة محارب </h5>
-                                                        @else
-                                                            <img class="rounded" style="text-align: center" src="app-assets/images/rest/female.png" width="100" height="100" alt="Recent Post Pic">
-                                                            <h5 style="margin-top: 5px"> إستراحة محاربة </h5>
-                                                        @endif
                                                     </div>
-                                                    @endif
-                                                </div>
+                                                @endif
                                             </div>
                                         </div>
+                                    </div>
                                 @endfor
                             </div>
                         </div>

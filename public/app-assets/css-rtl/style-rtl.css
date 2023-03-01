@@ -207,6 +207,10 @@ a:hover{
     background-color: #f8991d10;
     color: #f8991d !important;
 }
+.demo-inline-spacing > * {
+    margin-left: 1.5rem;
+    margin-top: 0rem;
+}
 .dark-layout .header-navbar .navbar-container .nav .dropdown-cart .dropdown-menu.dropdown-menu-media .dropdown-menu-footer, .dark-layout .header-navbar .navbar-container .nav .dropdown-notification .dropdown-menu.dropdown-menu-media .dropdown-menu-footer {
     background-color: #f8991d10;
     border-top: 1px solid #3b4253;
@@ -560,5 +564,12 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
 }
 .dark-layout .pagination:not([class*=pagination-]) .page-item.active .page-link {
     background-color: #f8991d;
+}
+
+/*============================
+    Timeline
+============================*/
+.card-user-timeline .timeline .timeline-item:not(:last-child) {
+    padding-bottom: 0.5rem;
 }
 
