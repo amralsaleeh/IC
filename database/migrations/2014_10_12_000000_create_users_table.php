@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('whatsapp');
             $table->integer('body_type');
-            $table->integer('activity_level');
+            $table->float('activity_level');
             $table->integer('fitness_level');
             $table->string('health_status');
             $table->string('injuries_info');
