@@ -17,9 +17,11 @@ return new class extends Migration
             $table->comment('');
             $table->integer('id', true);
             $table->string('name');
+            $table->string('description');
             $table->string('features');
             $table->integer('duration');
             $table->integer('price');
+            $table->integer('image');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

@@ -111,124 +111,55 @@
                         <p class="mb-2 pb-75">
                             قم باختيار الباقة المناسبة لك
                         </p>
-                        <div class="d-flex align-items-center justify-content-center mb-5 pb-50">
+                        {{-- <div class="d-flex align-items-center justify-content-center mb-5 pb-50">
                             <h6 class="me-1 mb-0">شهري</h6>
                             <div class="form-check form-switch">
                             <input type="checkbox" class="form-check-input" id="priceSwitch" />
                             <label class="form-check-label" for="priceSwitch"></label>
                             </div>
                             <h6 class="ms-50 mb-0">سنوي</h6>
-                        </div>
+                        </div> --}}
                         </div>
 
-                        <div class="row pricing-card">
+                        <div class="row pricing-card mb-2">
                             <div class="col-12 col-sm-offset-2 col-sm-10 col-md-12 col-lg-offset-2 col-lg-10 mx-auto">
                                 <div class="row">
-                                <div class="col-12 col-md-4">
-                                    <div class="card basic-pricing text-center" style="border: 1px solid #3d2d18;border-radius: 10px;margin: 5px;">
-                                    <div class="card-body">
-                                        <div class="pricing-badge text-end">
-                                            <span class="badge">&nbsp;</span>
+                                    @foreach ($bundles as $bundle)
+                                        <div class="col-12 col-md-4">
+                                            <div class="card basic-pricing text-center" style="border: 1px solid #3d2d18;border-radius: 10px;margin: 5px;">
+                                            <div class="card-body">
+                                                <div class="pricing-badge text-end">
+                                                    <span class="badge">&nbsp;</span>
+                                                </div>
+                                                <img src="app-assets/images/bundles/{{ $bundle->image }}.webp" style="width: 100px;">
+                                                <br>
+                                                <br>
+                                                <h3>{{ $bundle->name }}</h3>
+                                                <h5>( تدريب أونلاين )</h5>
+                                                <hr>
+                                                <p class="card-text">{{ $bundle->description }}</p>
+                                                <hr>
+                                                <div class="annual-plan">
+                                                <div class="plan-price mt-2">
+                                                    <sup class="font-medium-1 fw-bold text-primary">$</sup>
+                                                    <span class="pricing-basic-value fw-bolder text-primary">{{ $bundle->price }}</span>
+                                                    {{-- <sub class="pricing-duration text-body font-medium-1 fw-bold">/ شهر</sub> --}}
+                                                </div>
+                                                <small class="annual-pricing text-muted">$ {{ round($bundle->price,-1) / 3 }} / شهر</small>
+                                                </div>
+                                                <ul class="list-group list-group-circle text-start">
+                                                    <li class="list-group-item">برنامج غذائي (مخصص لك)</li>
+                                                    <li class="list-group-item">برنامج تدريبي (مخصص لك)</li>
+                                                    <li class="list-group-item">متابعة (أسبوعية)</li>
+                                                    <li class="list-group-item">تفقد دوري (أسبوعي)</li>
+                                                    <li class="list-group-item">الإجابة عن أي استفسار رياضي</li>
+                                                    <li class="list-group-item">تقديم نصائح لتحسين نمط الحياة</li>
+                                                </ul>
+                                                <button class="btn w-100 btn-outline-success mt-2">الباقة المفعلة حالياً</button>
+                                            </div>
+                                            </div>
                                         </div>
-                                        <img src="{{ asset ('app-assets/images/bundles/Silver.webp') }}" style="width: 100px;">
-                                        <br>
-                                        <br>
-                                        <h3>مبتدئ</h3>
-                                        <h5>( تدريب أونلاين )</h5>
-                                        <hr>
-                                        <p class="card-text">بداية حماسية مناسبة للجميع</p>
-                                        <hr>
-                                        <div class="annual-plan">
-                                        <div class="plan-price mt-2">
-                                            <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                            <span class="pricing-basic-value fw-bolder text-primary">25</span>
-                                            <sub class="pricing-duration text-body font-medium-1 fw-bold">/شهر</sub>
-                                        </div>
-                                        <small class="annual-pricing d-none text-muted"></small>
-                                        </div>
-                                        <ul class="list-group list-group-circle text-start">
-                                            <li class="list-group-item">برنامج غذائي (مخصص لك)</li>
-                                            <li class="list-group-item">برنامج تدريبي (مخصص لك)</li>
-                                            <li class="list-group-item">متابعة (أسبوعية)</li>
-                                            <li class="list-group-item">تفقد دوري (أسبوعي)</li>
-                                            <li class="list-group-item">الإجابة عن أي استفسار رياضي</li>
-                                            <li class="list-group-item">تقديم نصائح لتحسين نمط الحياة</li>
-                                        </ul>
-                                        <button class="btn w-100 btn-outline-success mt-2">الباقة المفعلة حالياً</button>
-                                    </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-4">
-                                    <div class="card standard-pricing popular text-center" style="border: 1px solid #3d2d18;border-radius: 10px;margin: 5px;">
-                                    <div class="card-body">
-                                        <div class="pricing-badge text-end">
-                                            <span class="badge rounded-pill badge-light-primary">الأفضل</span>
-                                        </div>
-                                        <img src="{{ asset ('app-assets/images/bundles/Gold.webp') }}" style="width: 100px;">
-                                        <br>
-                                        <br>
-                                        <h3>متقدم</h3>
-                                        <h5>( تدريب أونلاين )</h5>
-                                        <hr>
-                                        <p class="card-text">أفضل طريق على المدى البعيد</p>
-                                        <hr>
-                                        <div class="annual-plan">
-                                        <div class="plan-price mt-2">
-                                            <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                            <span class="pricing-standard-value fw-bolder text-primary">50</span>
-                                            <sub class="pricing-duration text-body font-medium-1 fw-bold">/شهر</sub>
-                                        </div>
-                                        <small class="annual-pricing d-none text-muted"></small>
-                                        </div>
-                                        <ul class="list-group list-group-circle text-start">
-                                            <li class="list-group-item">برنامج غذائي (مخصص لك)</li>
-                                            <li class="list-group-item">برنامج تدريبي (مخصص لك)</li>
-                                            <li class="list-group-item">برنامج مرونة (مخصص لك)</li>
-                                            <li class="list-group-item">متابعة (يومية)</li>
-                                            <li class="list-group-item">تفقد دوري (أسبوعي)</li>
-                                            <li class="list-group-item">الإجابة عن أي استفسار رياضي</li>
-                                            <li class="list-group-item">تقديم نصائح لتحسين نمط الحياة</li>
-                                        </ul>
-                                        <button class="btn w-100 btn-outline-primary mt-2">تطوير الباقة</button>
-                                    </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 col-md-4">
-                                    <div class="card enterprise-pricing text-center" style="border: 1px solid #3d2d18;border-radius: 10px;margin: 5px;">
-                                    <div class="card-body">
-                                        <div class="pricing-badge text-end">
-                                            <span class="badge">&nbsp;</span>
-                                        </div>
-                                        <img src="{{ asset ('app-assets/images/bundles/Dimond.webp') }}" style="width: 100px;">
-                                        <br>
-                                        <br>
-                                        <h3>محترف</h3>
-                                        <h5>( تدريب شخصي )</h5>
-                                        <hr>
-                                        <p class="card-text">أسرع طريق للإحتراف</p>
-                                        <hr>
-                                        <div class="annual-plan">
-                                        <div class="plan-price mt-2">
-                                            <sup class="font-medium-1 fw-bold text-primary">$</sup>
-                                            <span class="pricing-enterprise-value fw-bolder text-primary">125</span>
-                                            <sub class="pricing-duration text-body font-medium-1 fw-bold">/شهر</sub>
-                                        </div>
-                                        <small class="annual-pricing d-none text-muted"></small>
-                                        </div>
-                                        <ul class="list-group list-group-circle text-start">
-                                            <li class="list-group-item">تحليل مكونات الجسم</li>
-                                            <li class="list-group-item">الإشراف الشخصي أثناء التدريب</li>
-                                            <li class="list-group-item">برنامج غذائي (مخصص لك)</li>
-                                            <li class="list-group-item">برنامج تدريبي (مخصص لك)</li>
-                                            <li class="list-group-item">متابعة (يومية)</li>
-                                            <li class="list-group-item">تفقد دوري (أسبوعي)</li>
-                                            <li class="list-group-item">الإجابة عن أي استفسار رياضي</li>
-                                            <li class="list-group-item">تقديم نصائح لتحسين نمط الحياة</li>
-                                        </ul>
-                                        <button class="btn w-100 btn-outline-primary mt-2">تطوير الباقة</button>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
