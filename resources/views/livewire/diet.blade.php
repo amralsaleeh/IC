@@ -58,17 +58,17 @@
                         <div class="card-body pb-50" style="position: relative;">
                             <h5 class="pb-50">السعرات الحرارية</h5>
                             {{-- <h2 class="fw-bolder mb-1">2136 سعرة</h2> --}}
-                            <div class="progress progress-bar-success mb-1">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="45" aria-valuemax="100" style="width: 45%"></div>
+                            <div class="progress progress-bar-primary mb-1">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="45" aria-valuemax="100" style="width: {{ $dietCalories * 100 / $dailyCalories }}%"></div>
                             </div>
                             <div class="row border-top text-center mx-0">
                                 <div class="col-6 border-end pt-1">
-                                    <p class="card-text text-muted mb-0">الإحتياج</p>
-                                    <h3 class="fw-bolder mb-0">2,617</h3>
+                                    <p class="card-text text-muted mb-0">الفعلي</p>
+                                    <h3 class="fw-bolder mb-0">{{ $dietCalories }}</h3>
                                 </div>
                                 <div class="col-6 pt-1">
-                                    <p class="card-text text-muted mb-0">الفعلي</p>
-                                    <h3 class="fw-bolder mb-0">2,300</h3>
+                                    <p class="card-text text-muted mb-0">الإحتياج</p>
+                                    <h3 class="fw-bolder mb-0">{{ $dailyCalories }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +119,7 @@
 
                         <div class="card-body">
                             <div class="accordion accordion-margin" id="accordionExample">
-                                @for ($i = 0; $i < count($dietPlanDetails); $i++)
+                                @for ($i = 0; $i < count($dietMealDetails); $i++)
                                     <div class="card accordion-item">
                                         <h2 class="accordion-header" id="heading{{ $i }}">
                                             <button
@@ -142,12 +142,12 @@
                                             data-bs-parent="#accordionExample"
                                         >
                                             <div class="accordion-body">
-                                                @if ($dietPlanDetails[$i] != null)
+                                                @if ($dietMealDetails[$i] != null)
                                                     <div class="col-lg-4 col-12">
                                                         <div class="card card-user-timeline" style="background-color: #16161600;">
                                                             <div style="padding: 10px">
                                                                 <ul class="timeline ms-50">
-                                                                    @foreach ($dietPlanDetails[$i] as $food)
+                                                                    @foreach ($dietMealDetails[$i] as $food)
                                                                         <li class="timeline-item">
                                                                             <div class="d-flex mb-2">
                                                                                 <img class="rounded me-2" src="app-assets/images/foods/_Default{{-- {{ $food['image'] }} --}}.jpg" width="50" height="50" alt="Recent Post Pic">
@@ -180,7 +180,7 @@
 
                         <div class="card-body">
                             <p class="card-text">
-                              الجدول السابق يوضح الوجبات الخاصة بك بالخطة الحالية بناء على حالتك الخاصة, يمكنك النقر على أسم الوجبة لمشاهدة التفاصيل الخاصة بها, في حال وجود أي وجبة غير مفهومة الرجاء <a href="https://wa.me/message/POU44V4CNULGN1">التواصل معي</a> بشكل مباشر
+                              البيانات السابقة توضح الوجبات الخاصة بك بالخطة الحالية بناء على حالتك الخاصة, يمكنك النقر على أسم الوجبة لمشاهدة التفاصيل الخاصة بها, في حال وجود أي وجبة غير مفهومة الرجاء <a href="https://wa.me/message/POU44V4CNULGN1">التواصل معي</a> بشكل مباشر
                             </p>
                         </div>
                     </div>
@@ -220,7 +220,7 @@
                 offsetY: 120
               },
               value: {
-                offsetY: 50,
+                offsetY: -10,
                 fontSize: '20px',
                 color: undefined,
                 formatter: function (val) {
@@ -272,7 +272,7 @@
                 offsetY: 120
               },
               value: {
-                offsetY: 50,
+                offsetY: -10,
                 fontSize: '20px',
                 color: undefined,
                 formatter: function (val) {
@@ -324,7 +324,7 @@
                 offsetY: 120
               },
               value: {
-                offsetY: 50,
+                offsetY: -10,
                 fontSize: '20px',
                 color: undefined,
                 formatter: function (val) {

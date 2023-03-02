@@ -157,11 +157,11 @@
                           <div class="col-12 col-sm-6 mb-1">
                               <label class="form-label">مستوى النشاط</label>
                               <select readonly="readonly" class="hide-search form-select">
-                                <option value="5">عالٍ جداً</option>
-                                <option value="4">عالٍ</option>
-                                <option value="3">متوسط</option>
-                                <option value="2">خفيف</option>
-                                <option value="1">قليل جداً</option>
+                                <option value="1.9">عالٍ جداً - (تمرين شاق جداً وعمل بدني)</option>
+                                <option value="1.725">عالٍ - (تمرين شاق 6-7 أيام بالأسبوع)</option>
+                                <option value="1.55">متوسط - (تمرين معتدل 3-5 أيام في الأسبوع)</option>
+                                <option value="1.375">خفيف - (تمرين خفيف 1-3 أيام بالأسبوع)</option>
+                                <option value="1.2">قليل جداً - (تمرين قليل أو معدوم)</option>
                               </select>
                           </div>
                           <div class="col-12 col-sm-6 mb-1">
