@@ -107,35 +107,53 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="text-center">
-                        <h1 class="mt-5">الباقات والعروض</h1>
-                        <p class="mb-2 pb-75">
-                            قم باختيار الباقة المناسبة لك
-                        </p>
-                        {{-- <div class="d-flex align-items-center justify-content-center mb-5 pb-50">
-                            <h6 class="me-1 mb-0">شهري</h6>
-                            <div class="form-check form-switch">
-                            <input type="checkbox" class="form-check-input" id="priceSwitch" />
-                            <label class="form-check-label" for="priceSwitch"></label>
-                            </div>
-                            <h6 class="ms-50 mb-0">سنوي</h6>
-                        </div> --}}
-                        </div>
+                            <h1 class="mt-5 mb-50">الباقات والعروض</h1>
+                            <a data-bs-toggle="collapse" href="#couponCollapse" role="button" aria-expanded="false" aria-controls="couponCollapse">
+                                هل لديك كوبون حسم؟
+                            </a>
 
-                        <div class="row pricing-card mb-2">
+                            {{-- <div class="input-group mb-1" id="couponCollapse" style="padding: 1% 10% !important;">
+                                <input wire:model="couponCode" type="text" class="form-control {{ $this->coupon != null ? 'is-valid' : '' }}" placeholder="COUPON123">
+                                <button wire:click.prevent="couponApply" class="btn btn-outline-primary waves-effect" type="button">تحقق</button>
+                            </div> --}}
+                            
+                            {{-- <div class="card-body">
+                                <div class="input-group collapse" id="couponCollapse" style="padding: 1% 10% !important;">
+                                    <input wire:model="couponCode" type="text" class="form-control is-invalid" placeholder="COUPON123">
+                                    <button class="btn btn-outline-primary waves-effect" id="button-addon2" type="button">تحقق</button>
+                                </div>
+                            </div> --}}
+                            {{-- <div class="d-flex align-items-center justify-content-center mb-5 pb-50">
+                                <h6 class="me-1 mb-0">شهري</h6>
+                                <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="priceSwitch" />
+                                <label class="form-check-label" for="priceSwitch"></label>
+                                </div>
+                                <h6 class="ms-50 mb-0">سنوي</h6>
+                            </div> --}}
+                        </div>
+                        
+                        <div class="row pricing-card mb-2 mt-2">
                             <div class="col-12 col-sm-offset-2 col-sm-10 col-md-12 col-lg-offset-2 col-lg-10 mx-auto">
                                 <div class="row">
                                     @foreach ($bundles as $bundle)
-                                        <div class="col-12 col-md-4">
+                                        <div class="col-12 col-md-4 mb-1">
                                             <div class="card basic-pricing text-center" style="border: 1px solid #3d2d18;border-radius: 10px;margin: 5px;">
                                             <div class="card-body">
+                                                @if ($this->coupon != null)
+                                                    <div class="pricing-badge text-end">
+                                                        <span class="badge rounded-pill badge-light-info">{{ 'كود الحسم: ' . $coupon->name . ' - ' . $discounts * 100 . '%' }}</span>
+                                                    </div>
+                                                @endif
                                                 <div class="pricing-badge text-end">
-                                                    <span class="badge">&nbsp;</span>
+                                                    <span class="badge mt-50 rounded-pill badge-light-primary {{ $bundle->id != $activatedBundle ? "invisible" : "" }}">الحالية</span>
                                                 </div>
+                                                
                                                 <img src="app-assets/images/bundles/{{ $bundle->image }}.webp" style="width: 100px;">
                                                 <br>
                                                 <br>
                                                 <h3>{{ $bundle->name }}</h3>
-                                                <h5>( تدريب أونلاين )</h5>
+                                                <h5>( فئة الـ <a href="#">{{ $bundle->duration * 30 }}</a> يوم )</h5>
                                                 <hr>
                                                 <p class="card-text">{{ $bundle->description }}</p>
                                                 <hr>
@@ -145,18 +163,29 @@
                                                     <span class="pricing-basic-value fw-bolder text-primary">{{ $bundle->price }}</span>
                                                     {{-- <sub class="pricing-duration text-body font-medium-1 fw-bold">/ شهر</sub> --}}
                                                 </div>
-                                                <small class="annual-pricing text-muted">$ {{ round($bundle->price,-1) / 3 }} / شهر</small>
+                                                <small class="annual-pricing text-muted">$ {{ round($bundle->price / $bundle->duration , 0) }} / شهر</small>
                                                 </div>
                                                 <ul class="list-group list-group-circle text-start">
-                                                    <li class="list-group-item">برنامج غذائي (مخصص لك)</li>
-                                                    <li class="list-group-item">برنامج تدريبي (مخصص لك)</li>
-                                                    <li class="list-group-item">متابعة (أسبوعية)</li>
-                                                    <li class="list-group-item">تفقد دوري (أسبوعي)</li>
-                                                    <li class="list-group-item">الإجابة عن أي استفسار رياضي</li>
-                                                    <li class="list-group-item">تقديم نصائح لتحسين نمط الحياة</li>
+                                                    @foreach ($bundlesFeatures[$bundle->id - 1] as $feature)
+                                                        <li class="list-group-item">{{ $feature }}</li>
+                                                    @endforeach
                                                 </ul>
-                                                <button class="btn w-100 btn-outline-success mt-2">الباقة المفعلة حالياً</button>
+                                                @if ($bundle->id == $activatedBundle)
+                                                    <a href="https://paypal.me/ReemAlsaleh/{{ $bundle->price }}">
+                                                        <button class="btn w-100 btn-outline-success mt-2">هل تريد تجديد الباقة الحالية؟</button>
+                                                    </a>
+                                                @else
+                                                    <a href="https://paypal.me/ReemAlsaleh/{{ $bundle->price }}">
+                                                        <button class="btn w-100 btn-outline-primary mt-2">إشترك الآن</button>
+                                                    </a>
+                                                @endif
                                             </div>
+                                            
+                                                <h5 class="card-text text-muted">
+                                                 خدمة الـ PayPal غير متوفرة لديك؟
+                                                </h5>
+                                                <a href="https://wa.me/message/POU44V4CNULGN1" class="mb-2">تواصل معي</a>
+                                            
                                             </div>
                                         </div>
                                     @endforeach
@@ -174,7 +203,7 @@
 
                         <div class="card-header d-flex justify-content-between align-items-center" style="margin-bottom: -15px;">
                             <h4 class="card-title mb-sm-0 mb-1">الأسئلة المتكررة</h4>
-                            <a href="https://wa.me/message/POU44V4CNULGN1" style="color: gray">هل لديك سؤال أخر, تواصل معي؟</a>
+                            <a href="https://wa.me/message/POU44V4CNULGN1" style="color: gray">لديك سؤال أخر, تواصل معي؟</a>
                         </div>
 
                         <div class="card-body">

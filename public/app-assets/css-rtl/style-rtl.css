@@ -218,6 +218,9 @@ a:hover{
 .badge.badge-up {
     font-size: 1.09rem;
 }
+.badge {
+    font-size: 100%;
+}
 
 /*============================
     Form
