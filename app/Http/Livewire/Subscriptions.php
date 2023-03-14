@@ -7,10 +7,12 @@ use App\Models\CouponModel;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class Subscriptions extends Component
 {
-    protected $Subscriptions;
+    public $subscriptions;
+    protected $lastSubscription;
 
     public $isActive = 0;
     public $activatedBundle;
@@ -21,32 +23,34 @@ class Subscriptions extends Component
     public $bundlesFeatures;
 
     public $coupon;
+    public $couponCode;
+    public $couponExist;
     public $discounts = 1;
-
-    // public function couponApply()
-    // {
-    //     $this->coupon = CouponModel::where('name', '=', $this->couponCode)->first();
-    //     $this->discounts = $this->coupon->discount;
-    //     // dd($this->discounts);
-    // }
 
     public function render()
     {
-        // Expiration percentage
-        $this->Subscriptions = DB::table('subscriptions')
+        // All subscriptions history
+        $this->subscriptions = DB::table('subscriptions')
             ->join('bundles', 'bundles.id', '=', 'subscriptions.bundles_id')
-            ->where('users_id','=', 1)
+            ->where('users_id','=', Auth::user()->id)
+            ->orderBy('expiration_date', 'desc')
+            ->get();
+
+        // Expiration percentage
+        $this->lastSubscription = DB::table('subscriptions')
+            ->join('bundles', 'bundles.id', '=', 'subscriptions.bundles_id')
+            ->where('users_id','=', Auth::user()->id)
             ->orderBy('expiration_date', 'desc')
             ->first();
 
-        if($this->Subscriptions->expiration_date > Carbon::now()->toDateTimeString())
+        if($this->lastSubscription->expiration_date > Carbon::now()->toDateTimeString())
         {
             $this->isActive = 1;
-            $this->activatedBundle = $this->Subscriptions->bundles_id;
+            $this->activatedBundle = $this->lastSubscription->bundles_id;
         }
 
-        $this->expirationDate = $this->Subscriptions->expiration_date;
-        $this->expirationPercentage = 100 - Carbon::parse($this->Subscriptions->expiration_date)->diff(Carbon::now()->toDateTimeString())->days * 100 / $this->Subscriptions->duration;
+        $this->expirationDate = $this->lastSubscription->expiration_date;
+        $this->expirationPercentage = 100 - Carbon::parse($this->lastSubscription->expiration_date)->diff(Carbon::now()->toDateTimeString())->days * 100 / ($this->lastSubscription->duration * 30);
 
         // Coupon
         if(Auth::user()->coupon_id != null)
@@ -72,10 +76,53 @@ class Subscriptions extends Component
             $this->bundlesFeatures->prepend(explode("-", $this->bundles[$i]->features));
             $this->bundles[$i]->price = round($this->bundles[$i]->price * $this->discounts , 0);
         }
-
-        // DD($this->bundles);
         
         return view('livewire.subscriptions');
+    }
+
+    // Show Add Coupon Modal
+    public function showAddCouponModal()
+    {
+        $this->couponCode = null;
+        $this->dispatchBrowserEvent('show_add_coupon_modal');
+    }
+
+    // Add Coupon
+    public function addCoupon()
+    {
+        $this->couponCode = CouponModel::where('name', '=', $this->couponCode)->where('expiration_date' , '>=' , Carbon::now())->first();
+        
+        if($this->couponCode != null)
+        {
+            $this->couponExist = true;
+            DB::table('users')
+                ->where('id', '=', Auth::user()->id)
+                ->update(['coupon_id' => $this->couponCode->id]);
+
+                $this->dispatchBrowserEvent('hide_add_coupon_modal', ['message' => 'تم إضافة الكوبون بنجاح']);
+
+                redirect(request()->header('Referer'));
+        }
+        else
+        {
+            $this->couponExist = false;
+        }
+    }
+
+    public function getCouponDiscounts($id)
+    {
+        $coupon = CouponModel::find($id);
+
+        if($coupon != null)
+        {
+            return CouponModel::find($id)->discount * 100 . '%';
+        }
+        else
+        {
+            return '-';
+        }
+        
+        // dd(CouponModel::find($id));
     }
 
     

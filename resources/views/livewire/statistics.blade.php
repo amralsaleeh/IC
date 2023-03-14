@@ -34,41 +34,38 @@
 
                 <div class="col-lg-8 col-md-12 col-12">
                     <div class="card">
-                      <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
-                            <div>
-                                <h4 class="card-title">المؤشرات</h4>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-inline-block me-1">
-                                <div class="d-flex align-items-center">
-                                    <i data-feather="circle" class="font-small-3 me-50" style="color:#1fe076"></i>
-                                    <h6 class="mb-0">الوزن</h6>
-                                </div>
-                            </div>
-                            <div class="d-inline-block">
-                                <div class="d-flex align-items-center">
-                                    <i data-feather="circle" class="font-small-3 me-50" style="color:#c9762c"></i>
-                                    <h6 class="mb-0">نسبة الدهون</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="text-align: center;cursor: pointer;">
-                            <div class="btn-group mt-md-0 mt-1" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="radio_options" id="radio_option1" autocomplete="off"  />
-                                <label class="btn btn-outline-primary" for="radio_option1">أسبوعي</label>
-
-                                <input type="radio" class="btn-check" name="radio_options" id="radio_option2" autocomplete="off" checked />
-                                <label class="btn btn-outline-primary" for="radio_option2">شهري</label>
-
-                                <input type="radio" class="btn-check" name="radio_options" id="radio_option3" autocomplete="off" />
-                                <label class="btn btn-outline-primary" for="radio_option3">سنوي</label>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="line-area-chart"></div>
-                            <div id="line-area-chart-2"></div>
-                        </div>
+                        <div class="card-header d-flex flex-sm-row flex-column justify-content-md-between align-items-start justify-content-start">
+                              <div>
+                                  <h4 class="card-title">الإحصائيات</h4>
+                              </div>
+                          </div>
+                          {{-- <div class="card-body">
+                              <div class="d-inline-block me-1">
+                                  <div class="d-flex align-items-center">
+                                      <i data-feather="circle" class="font-small-3 me-50" style="color:#1fe076"></i>
+                                      <h6 class="mb-0">الوزن</h6>
+                                  </div>
+                              </div>
+                              <div class="d-inline-block">
+                                  <div class="d-flex align-items-center">
+                                      <i data-feather="circle" class="font-small-3 me-50" style="color:#c9762c"></i>
+                                      <h6 class="mb-0">نسبة الدهون</h6>
+                                  </div>
+                              </div>
+                          </div> --}}
+                          {{-- <div style="text-align: center; cursor:pointer;">
+                              <div class="btn-group mt-md-0 mt-1" role="group" aria-label="Basic radio toggle button group">
+                                  <input wire:click.prevent="showMonthlyStatics" type="radio" class="btn-check" name="radio_options" id="radio_option2" autocomplete="off" checked />
+                                  <label class="btn btn-outline-primary" for="radio_option2">شهري</label>
+  
+                                  <input wire:click.prevent="showYearlyStatics" type="radio" class="btn-check" name="radio_options" id="radio_option3" autocomplete="off" />
+                                  <label class="btn btn-outline-primary" for="radio_option3">سنوي</label>
+                              </div>
+                          </div> --}}
+                          <div class="card-body">
+                              <div id="line-area-chart"></div>
+                              {{-- <div id="line-area-chart-2"></div> --}}
+                          </div>
                       </div>
                 </div>
 
@@ -210,6 +207,198 @@
 
 <!-- Page js files -->
 @section('page-script')
-    <script src="{{ asset('app-assets/js/scripts/pages/statistics.js') }}"></script>
+    {{-- <script src="{{ asset('app-assets/js/scripts/pages/statistics.js') }}"></script> --}}
     <script src="{{ asset('app-assets/js/scripts/forms/form-number-input.js') }}"></script>
+
+    {{-- Charts --}}
+    <script>
+        document.addEventListener('livewire:load', function () {
+
+        'use strict';
+
+        var sessionChart;
+        var sessionChartOptions;
+
+        var $strokeColor = '#ebe9f1';
+
+        // Line Chart - 1
+        // --------------------------------------------------------------------
+        var areaChartEl = document.querySelector('#line-area-chart'),
+        areaChartConfig = {
+            chart: {
+                height: 400,
+                type: 'line',
+                toolbar: {
+                show: false
+                },
+                zoom: {
+                enabled: false
+                }
+            },
+            grid: {
+                borderColor: '#1fe076',
+                strokeDashArray: 5,
+                xaxis: {
+                lines: {
+                    show: true
+                }
+                },
+                yaxis: {
+                lines: {
+                    show: false
+                }
+                },
+                padding: {
+                top: -30,
+                bottom: 0
+                }
+            },
+            stroke: {
+                width: 3
+            },
+            colors: ['#c9762c','#1fe076'],
+            series: [
+
+                {
+                    name: 'الوزن (كغ)',
+                    data: @json($weights->values()->toArray())
+                },
+                {
+                    name: 'نسبة الدهون (%)',
+                    data: @json($fats->values()->toArray())
+                }
+
+            ],
+            markers: {
+                size: 5,
+                colors: ['#c9762c','#1fe076'],
+                strokeColors: '#1fe076',
+                strokeWidth: 2,
+                strokeOpacity: 1,
+                strokeDashArray: 0,
+                fillOpacity: 0,
+                shape: 'circle',
+                radius: 2,
+                hover: {
+                size: 9
+                }
+            },
+            xaxis: {
+                labels: {
+                show: true,
+                style: {
+                    fontSize: '15px'
+                }
+                },
+                axisBorder: {
+                show: false
+                },
+                axisTicks: {
+                show: false
+                },
+                categories: @json($fats->keys()->toArray())
+            },
+            yaxis: {
+                show: false
+            },
+            tooltip: {
+                x: {
+                show: false
+                }
+            }
+        };
+        if (typeof areaChartEl !== undefined && areaChartEl !== null) {
+        var areaChart = new ApexCharts(areaChartEl, areaChartConfig);
+        areaChart.render();
+        }
+
+        // Area Chart
+        // --------------------------------------------------------------------
+        var areaChartE2 = document.querySelector('#sales-visit-chart'),
+        areaChartConfigg = {
+            chart: {
+            height: 400,
+            type: 'radar',
+            fontFamily: 'GumelaArabic-Regular',
+            dropShadow: {
+                enabled: true,
+                blur: 8,
+                left: 1,
+                top: 1,
+                opacity: 0.2
+            },
+            toolbar: {
+                show: false
+            },
+            offsetY: 5
+            },
+            series: [
+            {
+                name: 'الهدف',
+                data: [100, 100, 100, 100, 100, 100, 100, 100, 100]
+            },
+            {
+                name: 'الحالية',
+                data: [75, 73, 90, 92, 86, 76, 75, 90, 100]
+            }
+            ],
+            stroke: {
+            width: 1
+            },
+            colors: ['#14ae65', '#aee554' ],
+            plotOptions: {
+            radar: {
+                polygons: {
+                strokeColors: [$strokeColor, 'transparent', 'transparent', 'transparent', 'transparent', 'transparent'],
+                connectorColors: 'transparent'
+                }
+            }
+            },
+            fill: {
+            opacity: [0.2, 0.6]
+            },
+            markers: {
+            size: 0
+            },
+            legend: {
+            show: false
+            },
+            xaxis: {
+                categories: ['الرقبة', 'الكتاف', 'الذراع', 'البطن', 'الفخذ', 'السمانة', 'الخصر', 'الساعد', 'الصدر'],
+                labels: {
+                show: true,
+                style: {
+                    colors: ["#a8a8a8"],
+                    fontSize: "16px"
+                }
+                }
+            },
+            dataLabels: {
+            enabled: false,
+            background: {
+                foreColor: [$strokeColor, $strokeColor, $strokeColor, $strokeColor, $strokeColor, $strokeColor]
+            }
+            },
+            yaxis: {
+            show: false,
+            min: 0,
+            max: 136,
+            tickAmount: 4,
+            },
+            grid: {
+            show: false,
+            padding: {
+                bottom: -27
+            }
+            }
+        };
+        if (typeof areaChartE2 !== undefined && areaChartE2 !== null) {
+            var areaChart = new ApexCharts(areaChartE2, areaChartConfigg);
+            areaChart.render();
+        }
+
+    });
+
+    </script>
+
 @endsection

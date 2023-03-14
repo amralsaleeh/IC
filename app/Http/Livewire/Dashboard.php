@@ -95,7 +95,8 @@ class Dashboard extends Component
         $this->expirationDate = [$this->subscriptionLast->expiration_date];
         $this->expirationDate = date('Y/m/d', strtotime($this->expirationDate[0]));
 
-        $this->expirationPercentage = [round(100 - Carbon::parse($this->subscriptionLast->expiration_date)->diff(Carbon::now()->toDateTimeString())->days * 100 / $this->subscriptionLast->duration, 0)];
+        $this->expirationPercentage = [round(100 - Carbon::parse($this->subscriptionLast->expiration_date)->diff(Carbon::now()->toDateTimeString())->days * 100 / ($this->subscriptionLast->duration * 30), 0)];
+        // dd($this->expirationPercentage);
         if($this->expirationPercentage[0] < 0 || $this->isActive == 0) $this->expirationPercentage[0] = 100;
     }
 

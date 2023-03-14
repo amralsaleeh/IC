@@ -17,7 +17,7 @@ return new class extends Migration
             $table->comment('');
             $table->integer('id', true);
             $table->string('name');
-            $table->integer('discount');
+            $table->float('discount');
             $table->timestamp('expiration_date');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');

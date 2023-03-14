@@ -30,6 +30,14 @@
             </div>
         </div>
         <div class="content-body">
+            <div class="row mb-2">
+                <div class="d-flex justify-content-end">
+                    <button wire:click.prevent="showAddCouponModal" type="button" class="btn btn-primary">
+                        <i class="fa-solid fa-tag mx-50"></i>إضافة كوبون حسم
+                    </button>
+                </div>
+            </div>
+
             <div class="row" id="basic-table">
 
                 <div class="col-12">
@@ -67,55 +75,78 @@
                 </div>
             </div>
 
-                {{-- <div class="col-12">
-                  <div class="card">
+            {{-- <div class="row">
+                <div class="col-12">
+                    <div class="card">
 
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                            <tr>
-                              <th style="border-radius: 0px 10px 0px 0px;">المدة</th>
-                              <th>الفئة</th>
-                              <th>المبلغ</th>
-                              <th>الحسم</th>
-                              <th style="border-radius: 10px 0px 0px 0px;">الملاحظات</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                              <tr>
-                                  <td>2022/02/28 - 2022/03/28</td>
-                                  <td>التدريب الأونلاين</td>
-                                  <td>$50</td>
-                                  <td>-</td>
-                                  <td>-</td>
-                              </tr>
-                              <tr>
-                                  <td>2022/02/28 - 2022/03/28</td>
-                                  <td>التدريب الأونلاين</td>
-                                  <td>$100</td>
-                                  <td>%25</td>
-                                  <td>حسم الأصدقاء</td>
-                              </tr>
-                          </tbody>
-                      </table>
+                        <div class="card-header d-flex justify-content-between align-items-center" style="margin-bottom: -15px;">
+                            <h4 class="card-title mb-sm-0 mb-1">الدفعات المالية</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="accordion accordion-margin" id="accordionExample">
+                                <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button
+                                    class="accordion-button collapsed"
+                                    data-bs-toggle="collapse"
+                                    role="button"
+                                    data-bs-target="#collapseOne"
+                                    aria-expanded="false"
+                                    aria-controls="collapseOne"
+                                    >
+                                    السجل
+                                    </button>
+                                </h2>
+
+                                <div
+                                    id="collapseOne"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="headingOne"
+                                    data-bs-parent="#accordionExample"
+                                >
+                                    <div class="accordion-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                              <thead>
+                                                  <tr>
+                                                    <th style="border-radius: 0px 10px 0px 0px;">المدة</th>
+                                                    <th>الباقة</th>
+                                                    <th>المبلغ</th>
+                                                    <th>الحسم</th>
+                                                    <th style="border-radius: 10px 0px 0px 0px;">الإنتهاء</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($subscriptions as $subscription)
+                                                    <tr>
+                                                        <td>{{ $subscription->duration . ' أشهر' }}</td>
+                                                        <td>{{ $subscription->name }}</td>
+                                                        <td>{{ '$' . $subscription->payment }}</td>
+                                                        <td>{{ $this->getCouponDiscounts($subscription->coupons_id) }}</td>
+                                                        <td>{{ $subscription->expiration_date }}</td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                          </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                  </div>
-                </div> --}}
+                </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="text-center">
                             <h1 class="mt-5 mb-50">الباقات والعروض</h1>
-                            <a data-bs-toggle="collapse" href="#couponCollapse" role="button" aria-expanded="false" aria-controls="couponCollapse">
+                            <a wire:click.prevent="showAddCouponModal" href="">
                                 هل لديك كوبون حسم؟
                             </a>
-
-                            {{-- <div class="input-group mb-1" id="couponCollapse" style="padding: 1% 10% !important;">
-                                <input wire:model="couponCode" type="text" class="form-control {{ $this->coupon != null ? 'is-valid' : '' }}" placeholder="COUPON123">
-                                <button wire:click.prevent="couponApply" class="btn btn-outline-primary waves-effect" type="button">تحقق</button>
-                            </div> --}}
                             
                             {{-- <div class="card-body">
                                 <div class="input-group collapse" id="couponCollapse" style="padding: 1% 10% !important;">
@@ -131,6 +162,7 @@
                                 </div>
                                 <h6 class="ms-50 mb-0">سنوي</h6>
                             </div> --}}
+                            
                         </div>
                         
                         <div class="row pricing-card mb-2 mt-2">
@@ -285,12 +317,44 @@
                         </div>
                     </div>
                 </div>
+            </div>
+    </div>
+
+
+    <!-- New Coupon Modal  -->
+    <div wire:ignore.self class="modal fade" id="addCouponModal" tabindex="-1" aria-labelledby="addNewCardTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-transparent">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-sm-5 mx-50 pb-5">
+                    <h1 class="text-center mb-1" id="addNewCardTitle">إضافة كوبون حسم</h1>
+                    {{-- <p class="text-center">Add card for future billing</p> --}}
+
+                    <form autocomplete="off" wire:submit.prevent="addCoupon" id="addNewCardValidation" class="row gy-1 gx-2 mt-75">
+                        <div class="form-group col-md-12">
+                            {{-- <label for="name">الرمز</label> --}}
+                            <input wire:model.defer="couponCode" type="text" class="form-control" id="couponCode" placeholder="COUPON123" style="text-transform:uppercase">
+                        </div>
+
+                        <p>
+                            ملاحظة: يمكنك الإستفادة من كوبون واحد فقط!
+                        </p>
+
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary me-1 mt-1">إضافة</button>
+                            <button type="reset" class="btn btn-outline-secondary mt-1" data-bs-dismiss="modal" aria-label="Close">
+                                تجاهل
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <!--  /New Coupon Modal  -->
     </div>
-</div>
 </div>
 
 {{-- JS --}}
@@ -299,6 +363,35 @@
 @endsection
 
 @section('page-script')
-    <script src="{{ asset('app-assets/js/scripts/pages/page-pricing.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            // Coupon
+            window.addEventListener('show_add_coupon_modal', event => {
+                $('#addCouponModal').modal('show');
+            })
+            window.addEventListener('hide_add_coupon_modal', event => {
+                $('#addCouponModal').modal('hide');
+                toastr.success(event.detail.message, 'نجحت العملية!');
+            })
+        })
+    </script>
 @endsection
 {{-- /JS --}}

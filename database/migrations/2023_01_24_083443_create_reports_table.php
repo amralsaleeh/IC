@@ -21,13 +21,14 @@ return new class extends Migration
             $table->integer('weight');
             $table->integer('fat');
             $table->integer('neck');
-            $table->integer('waist');
-            $table->integer('hip');
-            $table->integer('chest');
             $table->integer('shoulder');
             $table->integer('arm');
+            $table->integer('waist');
             $table->integer('thigh');
+            $table->integer('calf');
+            $table->integer('hip');
             $table->integer('forearm');
+            $table->integer('chest');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

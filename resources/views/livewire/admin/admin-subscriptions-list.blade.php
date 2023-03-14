@@ -74,9 +74,9 @@
                         </div> --}}
                         <div class="card-body">
                             <div id="line-area-chart"></div>
-                            <div id="line-area-chart-2"></div>
+                            {{-- <div id="line-area-chart-2"></div> --}}
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <div class="col-md-4 col-12">
                     <div class="card">
