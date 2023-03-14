@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class Statistics extends Component
 {
-    public $measurements=[];
+    public $measurementsPercentage=[];
     public $weights=[];
     public $fats=[];
 
@@ -37,12 +37,25 @@ class Statistics extends Component
         //     ->select(DB::raw("fat, (DATE_FORMAT(created_at, '%e / %c')) as newDate"))
         //     ->pluck('fat', 'newDate');
 
-        $this->measurements = DB::table('reports')
+        // Measurements
+        $measurementsNow = DB::table('reports')
             ->join('users', 'users.id', '=', 'reports.user_id')
             ->select('wrist_size' , 'neck', 'shoulder', 'arm', 'waist', 'thigh', 'calf', 'hip', 'forearm', 'chest')
             ->where('user_id','=', Auth::user()->id)
             ->first();
 
-        dd($this->measurements);
+        $chestGoal = $measurementsNow->wrist_size * 6.5;
+        $measurementsGoal = ['neck' =>round($chestGoal * 0.37),
+                             'shoulder' => round($measurementsNow->wrist_size * 7.2), 
+                             'arm' => round($chestGoal * 0.36) , 
+                             'waist' => round($chestGoal * 0.7),
+                             'thigh' => round($chestGoal * 0.53),
+                             'calf' => round($chestGoal * 0.34),
+                             'hip' => round($chestGoal * 0.85),
+                             'forearm' => round($chestGoal * 0.29),
+                             'chest' => round($chestGoal)
+                            ];
+
+        dd($measurementsGoal);
     }
 }
